@@ -44,22 +44,66 @@ textarea, select {
 time, select {
     color: black;
 }
-.search-btn {
+
+.searchbtn {
     position: fixed;
     bottom: 20px;
     right: 20px;
     background-color: #4a4a4a;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-    border-color: #111111;
-    color: white;
-    padding: 10px 15px;
-    border: none;
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.5);
     border-radius: 5px;
-    cursor: pointer;
-    font-size: 16px;
+    color: white;
+    /* padding: 5px 10px; */
+    padding-left: 10px;
+    padding-right: 10px;
+    width: auto;
+    height: 45px;
+    transition: all 0.8s ease-in-out 0.8s;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
 }
 
-/*SideBar*/
+/* Keep emoji visible */
+.stitle {
+    font-size: 16px;
+    white-space: nowrap;
+}
+
+/* Hide input & button initially */
+.search-area {
+    display: flex;
+    gap: 5px;
+    opacity: 0;
+    max-width: 0;  /* Start hidden */
+    overflow: hidden;  /* Prevent sudden jumps */
+    transition: max-width 0.8s ease, opacity 0.5s ease;
+}
+
+/* Expand input and button when hovering over the search button */
+.searchbtn:hover .search-area {
+    opacity: 1;
+    max-width: 200px;  /* Adjust width */
+}
+
+.search-area input {
+    margin-left: 10px;
+    width: 100px; /* Fixed width inside max-width */
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+.search-area button {
+    padding: 5px 10px;
+    border: none;
+    background-color: #6a6a6a;
+    color: white;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+/* SideBar */
 .sidenav {
     border: 5px solid rgb(40, 40, 40);
     height: 100%;
@@ -71,13 +115,14 @@ time, select {
     background-color: #111111;
     overflow-x: hidden;
     padding-top: 20px;
-  }
+}
 
 .sidenav img{
     transition: transform .5s, background-color 0.5s ease; 
     border-radius: 5px;
     cursor: pointer;
 }
+
 .sidenav a {
     padding: 6px 8px 6px 16px;
     text-decoration: none;
@@ -127,7 +172,7 @@ time, select {
     margin-top: 20px;
 }
 
-  @media screen and (max-height: 450px) {
+@media screen and (max-height: 450px) {
     .sidenav {padding-top: 15px;}
     .sidenav a {font-size: 18px;}
 }
