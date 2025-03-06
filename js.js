@@ -30,7 +30,6 @@ function search() {
     var input = document.getElementById("searchbar").value;
     var url = "https://www.google.com/search?q=" + encodeURIComponent(input);
     window.open(url, "_blank");
-    document.getElementById("serachbar").value clear;
 }
 
 function classroomlink() {
