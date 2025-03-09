@@ -13,7 +13,10 @@
         </div>
         <div class="content">
             <p class="p1">Welcome to this website.<br>This website helps students organize school tasks with a search bar, calendar, classroom, and more!</p>
-
+            <div class="toggleButtons">
+                <button id="toggleButton" onclick="toggleTable()">- Minimize Table</button>
+                <button id="addNote" onclick="addNote()">+ Add Note</button>
+            </div>
             <!-- Search Button -->
             <div class="searchbtn">
                 <p class="stitle">🔍</p>
@@ -23,7 +26,6 @@
                 </div>
             </div>
             
-
             <!-- Sidebar Navigation -->
             <div class="sidenav">
                 <div class="nav-item1" onclick="calendarlink()">
@@ -42,7 +44,7 @@
         
             <!-- Timetable -->
             <div class="table">
-                <table>
+                <table id="myTable">
                     <tr>
                         <th>Time</th>
                         <th><input type="time" id="time1"></th>
@@ -156,6 +158,8 @@
                     </tr>
                 </table>
             </div>
+            <!-- Note Section -->
+            <div id="noteSection" class="noteSection"></div>
         </div>
     </div>
     <link rel="stylesheet" href="table.css">
