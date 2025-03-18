@@ -20,8 +20,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
 function search() {
     console.log("Search button clicked");
-    var input = document.getElementById("searchbtn").value;
-    var url = "https://www.google.com/search?q=" + encodeURIComponent(input);
+    let input = document.getElementById("search-input").value;
+    const url = "https://www.google.com/search?q=" + encodeURIComponent(input);
     window.open(url, "_blank");
 }
 

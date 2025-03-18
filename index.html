@@ -8,11 +8,13 @@
 </head>
 <body>
     <div class="main">
+        <!-- Header -->
         <div class="header">
             <h1 class="h1">School Work Organizer<img class="img" src="beta.png" alt="beta"></h1>
         </div>
         <div class="content">
             <p class="p1">Welcome to this website.<br>This website helps students organize school tasks with a search bar, calendar, classroom, and more!</p>
+            <!-- Toggle Buttons -->
             <div class="toggleButtons">
                 <button id="toggleButton" onclick="toggleTable()">- Minimize Table</button>
                 <button id="addNote" onclick="addNote()">+ Add Note</button>
@@ -21,11 +23,10 @@
             <div class="searchbtn">
                 <p class="stitle">🔍</p>
                 <div class="search-area">
-                    <input type="text" id="search-input" placeholder="Type here...">
+                    <input type="text" id="search-input"  autocomplete="off" placeholder="Type here...">
                     <button id="searchbtn" onclick="search()">Search</button>
                 </div>
             </div>
-            
             <!-- Sidebar Navigation -->
             <div class="sidenav">
                 <div class="nav-item1" onclick="calendarlink()">
@@ -41,7 +42,6 @@
                     <img src="Sidebar Icons/gcalendar.png" alt="Google Drive" />
                 </div>
             </div>
-        
             <!-- Timetable -->
             <div class="table">
                 <table id="myTable">
@@ -161,6 +161,10 @@
             <!-- Note Section -->
             <div id="noteSection" class="noteSection"></div>
         </div>
+    </div>
+    <div class="footer">
+        <p class="p2">© 2021 School Work Organizer</p>
+        <a href="emailto:waleed.gamer173@gmail.com" class="email">Contact Us</a>
     </div>
     <link rel="stylesheet" href="table.css">
 </body>
