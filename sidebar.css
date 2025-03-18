@@ -24,7 +24,7 @@
     transition: color 0.5s ease;
 }
 
-.nav-item1:hover, .nav-item2:hover, .nav-item3:hover, .nav-item4:hover {
+.nav-item1:hover, .nav-item2:hover, .nav-item3:hover, .nav-item4:hover, .nav-item5:hover, .nav-item6:hover, .nav-item7:hover {
     text-align: center; /* Centers the image horizontally */
     background-color: gray;
     border-radius: 20px;
@@ -33,7 +33,7 @@
     opacity: 1;
 }
 
-.nav-item1, .nav-item2, .nav-item3, .nav-item4 {
+.nav-item1, .nav-item2, .nav-item3, .nav-item4, .nav-item5, .nav-item6, .nav-item7 {
     margin-top: 10px;
     padding-top: 15px;
     padding-bottom: 15px;

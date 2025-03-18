@@ -49,6 +49,24 @@ function calendarlink() {
     window.open(url, "_blank");
 }
 
+function sheetslink() {
+    console.log("Sheets button clicked");
+    var url = "https://sheets.google.com/";
+    window.open(url, "_blank");
+}
+
+function slideslink() {
+    console.log("Slides button clicked");
+    var url = "https://slides.google.com/";
+    window.open(url, "_blank");
+}
+
+function docslink() {
+    console.log("Docs button clicked");
+    var url = "https://docs.google.com/";
+    window.open(url, "_blank");
+}
+
 function toggleTable() {
     var table = document.getElementById("myTable");
     var button = document.getElementById("toggleButton");
