@@ -31,26 +31,26 @@ html, body {
 html.light-theme {
     background-color: rgb(240, 240, 240);
     color: black;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease;
 }
 
 html.dark-theme {
     background-color: rgb(60, 60, 60);
     color: white;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease;
 }
 
 
 html.light-theme .sidenav {
     color: black;
     background-color: white;
-    transition: background-color 0.8s ease-in-out, border 0.8s ease-in-out;
+    transition: all 0.8s ease;
 }
 
 html.dark-theme .sidenav {
     color: white;
     background-color: #313131;
-    transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease;
 }
 
 html.light-theme .sidenav img {
@@ -61,11 +61,11 @@ html.light-theme .sidenav img {
 
 html.light-theme .searchbtn{
     background-color: rgb(240, 240, 240);
-    transition: all 0.8s ease-in-out;
+    transition: all 0.8s ease;
 }
 
-html.light-theme .nav-item1:hover, .nav-item2:hover, .nav-item3:hover, .nav-item4:hover, .nav-item5:hover, .nav-item6:hover, .nav-item7:hover {
-    background-color: black;
+html.light-theme .nav-item1:hover, html.light-theme .nav-item2:hover, html.light-theme .nav-item3:hover, html.light-theme .nav-item4:hover, html.light-theme .nav-item5:hover, html.light-theme .nav-item6:hover, html.light-theme .nav-item7:hover { 
+    background-color: lightgray;
     transition: transform 0.5s ease, background-color 0.5s ease, opacity 0.5s ease;
     opacity: 1;
 }

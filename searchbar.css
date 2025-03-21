@@ -11,7 +11,7 @@
     padding-right: 10px;
     width: auto;
     height: 45px;
-    transition: all 0.8s ease-in-out 0.8s;
+    transition: all 0.8s ease-in-out;
     overflow: hidden;
     display: flex;
     align-items: center;

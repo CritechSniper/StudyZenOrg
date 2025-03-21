@@ -65,9 +65,11 @@
 }
 
 .toggleTheme {
+    position: fixed;
     display: flex;
     justify-content: center;
     margin-top: 10px;
+    padding-left: 7px;
 }
 
 .toggleTheme fieldset {
