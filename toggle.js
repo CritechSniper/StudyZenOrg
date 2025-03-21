@@ -36,3 +36,16 @@ function addNote() {
         noteSection.appendChild(newNote); // Append the new div to the note section
     }
 }
+
+function toggleTheme() {
+    const html = document.documentElement; // Access the <html> element
+    // Toggle between light and dark theme
+    if (html.classList.contains("light-theme")) {
+        html.classList.remove("light-theme");
+        html.classList.add("dark-theme");
+    } else {
+        html.classList.remove("dark-theme");
+        html.classList.add("light-theme");
+    }
+}
+
