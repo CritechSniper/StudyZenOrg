@@ -39,13 +39,16 @@ function addNote() {
 
 function toggleTheme() {
     const html = document.documentElement; // Access the <html> element
+    var button = document.getElementById("toggleTheme");
     // Toggle between light and dark theme
     if (html.classList.contains("light-theme")) {
         html.classList.remove("light-theme");
         html.classList.add("dark-theme");
+        button.textContent = "🌙";
     } else {
         html.classList.remove("dark-theme");
         html.classList.add("light-theme");
+        button.textContent = "☀️";
     }
 }
 

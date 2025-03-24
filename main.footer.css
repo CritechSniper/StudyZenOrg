@@ -45,7 +45,7 @@ html.dark-theme .footer {
     transition: color 0.5s ease;
 }
 .footer a:hover{
-    color: white;
+    /* color: white; */
     text-decoration: underline;
     font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     transition: color 0.5s ease; 
