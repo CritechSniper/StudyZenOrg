@@ -1,0 +1,64 @@
+.sidenav {
+    height: 100%;
+    width: 100px;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #313131;
+    overflow-x: hidden;
+    padding-top: 20px;
+}
+
+.sidenav img{
+    transition: transform .5s, background-color 0.5s ease; 
+    border-radius: 5px;
+    cursor: pointer;
+    position: relative;
+}
+
+.sidenav img:hover::after {
+    content: attr(alt); /* Use the alt text as the tooltip */
+    position: absolute;
+    top: 50%;
+    left: 110%; /* Position tooltip to the right */
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+    font-size: 12px;
+    white-space: nowrap;
+    z-index: 10;
+}
+  
+.sidenav a:hover {
+    color: #f1f1f1;
+    cursor: pointer;
+    transition: color 0.5s ease;
+}
+
+.nav-item1:hover, .nav-item2:hover, .nav-item3:hover, .nav-item4:hover, .nav-item5:hover, .nav-item6:hover, .nav-item7:hover {
+    text-align: center;
+    background-color: gray;
+    border-radius: 20px;
+    transform: scale(1.2);
+    transition: transform 0.5s ease, background-color 0.5s ease, opacity 0.5s ease;
+    opacity: 1;
+}
+
+.nav-item1, .nav-item2, .nav-item3, .nav-item4, .nav-item5, .nav-item6, .nav-item7 {
+    margin-top: 10px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin-left: 15px;
+    margin-right: 15px;
+    text-align: center;
+    border-radius: 20px;
+    transition: transform 0.5s ease, background-color 0.5s ease, opacity 0.5s ease;
+    opacity: 0.7;
+}
+
+.nav-item img {
+    align-content: center;
+    margin-top: 20px;
+}

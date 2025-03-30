@@ -1,0 +1,27 @@
+textarea, select {
+    width: 130px;
+    height: 41px;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+}
+time, select {
+    color: black;
+}
+
+.table {
+    border-collapse: collapse;
+    width: 100px;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    padding: 3px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
