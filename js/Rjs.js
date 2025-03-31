@@ -1,47 +1,55 @@
-document.addEventListener("DOMContentLoaded", function () {
-    console.log("Rjs.js loaded!");
+// Import Firebase modules
+import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 
-    const registerButton = document.querySelector("#registerButton");
+// Your Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyCnVEwq0ZFqrQroNRaMaU1iFNLO5X0P2MY",
+  authDomain: "logindata173.firebaseapp.com",
+  databaseURL: "https://logindata173-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "logindata173",
+  storageBucket: "logindata173.firebasestorage.app",
+  messagingSenderId: "565454636117",
+  appId: "1:565454636117:web:1fe752b72f64b9140640dc"
+};
 
-    if (!registerButton) {
-        console.error("Register button not found!");
-        return;
-    }
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+const database = getDatabase(app);
 
-    registerButton.addEventListener("click", function (event) {
-        event.preventDefault();
+// Handle user registration
+document.getElementById("registerButton").addEventListener("click", function () {
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+  const firstName = document.getElementById("firstName").value;
+  const lastName = document.getElementById("lastName").value;
+  const username = document.getElementById("username").value;
 
-        const firstName = document.querySelector("#firstName").value.trim();
-        const lastName = document.querySelector("#lastName").value.trim();
-        const email = document.querySelector("#email").value.trim();
-        const username = document.querySelector("#username").value.trim();
-        const password = document.querySelector("#password").value.trim();
+  createUserWithEmailAndPassword(auth, email, password)
+    .then((userCredential) => {
+      const user = userCredential.user;
+      console.log("User registered:", user);
 
-        if (!firstName || !lastName || !email || !username || !password) {
-            alert("Please fill in all fields!");
-            return;
-        }
-
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .then((userCredential) => {
-                const user = userCredential.user;
-                console.log("User registered:", user.uid);
-
-                // Save user data to Firebase Database
-                return firebase.database().ref("users/" + user.uid).set({
-                    firstName: firstName,
-                    lastName: lastName,
-                    email: email,
-                    username: username
-                });
-            })
-            .then(() => {
-                alert("Registration successful! You can now log in.");
-                window.location.href = "login.html";
-            })
-            .catch((error) => {
-                console.error("Registration failed:", error.message);
-                alert("Registration failed: " + error.message);
-            });
+      // Store additional user data in Firebase Database
+      set(ref(database, "users/" + user.uid), {
+        firstName: firstName,
+        lastName: lastName,
+        username: username,
+        email: email,
+      })
+        .then(() => {
+          alert("User registered successfully!");
+          window.location.href = "login.html";
+        })
+        .catch((error) => {
+          console.error("Error saving user data:", error);
+          alert("Error saving user data: " + error.message);
+        });
+    })
+    .catch((error) => {
+      console.error("Registration failed:", error);
+      alert("Registration failed: " + error.message);
     });
 });

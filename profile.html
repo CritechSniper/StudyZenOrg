@@ -6,7 +6,7 @@
 </head>
 <body>
 	<link rel="stylesheet" href="css/Scss.css">
-  <script src="js/js.js"></script>
+    <script src="js/profile.js"></script>
 	<nav id="sidebar">
 		<ul>
 			<li>
@@ -15,13 +15,13 @@
 					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/></svg>
 				</button>
 			</li>
-			<li>
+            <li class="active">
                 <a href="profile.html">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q-83 0-141.5-58.5T280-680q0-83 58.5-141.5T480-880q83 0 141.5 58.5T680-680q0 83-58.5 141.5T480-480Zm0 80q83 0 156 31.5t127 85.5q54 54 85.5 127T880-80H80q0-83 31.5-156t85.5-127q54-54 127-85.5T480-400Z"/></svg>
                     <span>Profile</span>
                 </a>
             </li>
-			<li class="active">
+			<li>
 				<a href="home.html">
 					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
 					<span>Home</span>
@@ -47,5 +47,14 @@
 			</li>
 		</ul>
 	</nav>
+    <div class="content">
+        <h1>Profile</h1>
+        <div id="profileInfo">
+            <p><strong>First Name:</strong> <span id="firstName">Loading...</span></p>
+            <p><strong>Last Name:</strong> <span id="lastName">Loading...</span></p>
+            <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+            <p><strong>Username:</strong> <span id="username">Loading...</span></p>
+        </div>
+    </div>
 </body>
 </html>
