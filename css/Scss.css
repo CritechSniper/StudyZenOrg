@@ -1,0 +1,120 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --base-clr:#11121a;
+    --line-clr:#42434a;
+    --hover-clr:#222533;
+    --text-clr:#e6e6ef;
+    --acent-clr:#5e63ff;
+    --secondary-text-clr:#b0b3c1;
+}
+
+*{
+    margin: 0;
+    padding: 0;
+}
+
+html{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.5rem;
+}
+
+body {
+    min-height: 100vh;
+    min-height: 100dvh;
+    background-color: var(--base-clr);
+    color: var(--text-clr);
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+#sidebar {
+	box-sizing: border-box;
+	height: 100vh;
+	width: 200px;
+	padding: 5px 1em;
+	background-color: var(--base-clr);
+	border-right: 1px solid var(--line-clr);
+
+	position: sticky;
+	top: 0;
+	align-self: start;
+	transition: 300ms ease-in-out, opacity 300ms ease-in-out 1s;
+	overflow: hidden;
+}
+#sidebar.close {
+	padding: 5px;
+	width: 60px;
+}
+
+#sidebar ul {
+    list-style: none;
+}
+
+#sidebar > ul > li:first-child {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 16px;
+    .logo{
+        font-weight: 600;
+    }
+}
+
+#sidebar ul li.active a{
+	color: var(--acent-clr);
+
+	svg{
+		fill: var(--acent-clr);
+	}
+}
+
+#sidebar a, #sidebar .logo {
+	border-radius: .5em;
+  	padding: .85em;
+  	text-decoration: none;
+  	color: var(--text-clr);
+  	display: flex;
+  	align-items: center;
+  	gap: 1em;
+}
+
+#sidebar svg {
+	flex-shrink: 0;
+	fill: var(--text-clr);
+}
+
+#sidebar a span, #sidebar .logo {
+	opacity: 1;
+	transition: opacity 300ms ease-in-out;
+	flex-grow: 1;
+}
+
+#sidebar a:hover {
+	background-color: var(--hover-clr);
+}
+
+#toggle-btn {
+	margin-left: auto;
+	padding: 1em;
+	border: none;
+	border-radius: .5em;
+	background: none;
+	cursor: pointer;
+
+	svg {
+		transition: rotate 150ms ease;
+	}
+}
+
+#toggle-btn:hover {
+	background-color: var(--hover-clr);
+}
+
+.rotate svg:last-child{
+	rotate: 180deg;
+  }
+
+#sidebar.close a span {
+	opacity: 0;
+	transition: opacity 300ms ease-in-out;
+}
