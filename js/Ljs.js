@@ -1,3 +1,5 @@
+console.log("%cLogin script connected", "background-color: blue; color: white; border-radius: 5px;");
+
 // Import Firebase modules
 import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";

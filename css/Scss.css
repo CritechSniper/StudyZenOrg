@@ -100,21 +100,21 @@ body {
 	border-radius: .5em;
 	background: none;
 	cursor: pointer;
-
-	svg {
-		transition: rotate 150ms ease;
-	}
 }
 
 #toggle-btn:hover {
 	background-color: var(--hover-clr);
 }
 
-.rotate svg:last-child{
-	rotate: 180deg;
-  }
-
 #sidebar.close a span {
 	opacity: 0;
 	transition: opacity 300ms ease-in-out;
+}
+
+#toggle-btn svg {
+    transition: transform 0.3s ease-in-out;
+}
+
+#toggle-btn.rotate svg {
+    transform: rotate(180deg);
 }

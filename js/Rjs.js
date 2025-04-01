@@ -1,3 +1,5 @@
+console.log("%cRegister script connected", "background-color: blue; color: white; border-radius: 5px;");
+
 // Import Firebase modules
 import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";

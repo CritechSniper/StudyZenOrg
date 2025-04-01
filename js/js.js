@@ -1,35 +1,27 @@
-console.log(`STOP! YOU ARE NOT ALLOWED TO VIEW THE SOURCE CODE!\nIF YOU WANT TO SEE THE SOURCE CODE, PLEASE CONTACT THE OWNER OF THE WEBSITE!`);
-// alert('Dear user Please refain from reloading the page if you have added details. As this website is still on work, some features might not work properly. If you have feedbacks/suggestions, please send it buy clicking on the email below the page on the footer')
+function toggleSidebar() {
+    const sidebar = document.getElementById("sidebar");
+    const toggleButton = document.getElementById("toggle-btn");
 
-function showHelp() {
-    alert("Welcome to School Work Organizer!\n\n- Use the search bar to search faster.\n- Add notes using the '+ Add Note' button.\n- Save your timetable to avoid losing data.\n- Use the sidebar for quick links to Google services.");
+    if (!sidebar || !toggleButton) {
+        console.error("Sidebar or toggle button not found!");
+        return;
+    }
+
+    sidebar.classList.toggle("close");
+    toggleButton.classList.toggle("rotate"); // Apply rotate class to button
+
+    console.log('%c' + (sidebar.classList.contains("close") ? "Closing sidebar..." : "Opening sidebar..."), 'color: lightgray;');
+
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    const inputs = document.querySelectorAll("input, textarea");
-    const searchBar = document.getElementById("search"); // Assuming your search bar has an ID of 'search'
+    console.log("DOM fully loaded. Setting up event listeners...");
 
-    inputs.forEach(input => {
-        if (input !== searchBar) { // Ignore the search bar
-            const storedValue = localStorage.getItem(input.id || input.name);
-            if (storedValue) {
-                input.value = storedValue;
-            }
-            input.addEventListener("input", function () {
-                localStorage.setItem(input.id || input.name, input.value);
-            });
-        }
-    });
+    const toggleButton = document.getElementById("toggle-btn");
 
-    const toggleButton = document.getElementById('toggle-btn');
-    const sidebar = document.getElementById('sidebar');
-
-    if (toggleButton && sidebar) { // Ensure elements exist
-        toggleButton.addEventListener('click', function () {
-            sidebar.classList.toggle('close');
-            toggleButton.classList.toggle('rotate');
-        });
+    if (toggleButton) {
+        toggleButton.onclick = toggleSidebar; // Assign function directly
     } else {
-        console.error("Toggle button or sidebar element not found in the DOM.");
+        console.error("Toggle button not found in the DOM.");
     }
 });
