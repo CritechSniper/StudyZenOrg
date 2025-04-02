@@ -12,6 +12,7 @@ window.addEventListener("load", function () {
         console.log("User data loaded successfully:", userData);
     } else {
         // If no user data is found, show a message
-        document.getElementById("profileInfo").innerHTML = "<p>User data not found. Please log in again.</p>";
+        document.getElementById("profileInfo").style.display = "none";
+        document.getElementById("noUser").style.display = "block";
     }
 });

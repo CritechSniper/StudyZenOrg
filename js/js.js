@@ -25,3 +25,9 @@ document.addEventListener("DOMContentLoaded", function () {
         console.error("Toggle button not found in the DOM.");
     }
 });
+
+function signout() {
+    console.log("Signing out...");
+    localStorage.removeItem("user");
+    window.location.href='profile.html'
+}
