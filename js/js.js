@@ -15,8 +15,6 @@ function toggleSidebar() {
 }
 
 document.addEventListener("DOMContentLoaded", function () {
-    console.log("DOM fully loaded. Setting up event listeners...");
-
     const toggleButton = document.getElementById("toggle-btn");
 
     if (toggleButton) {
