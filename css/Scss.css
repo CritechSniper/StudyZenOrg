@@ -88,7 +88,9 @@ body {
 	transition: opacity 300ms ease-in-out;
 	flex-grow: 1;
 }
-
+#sidebar a {
+	white-space: nowrap;
+}
 #sidebar a:hover {
 	background-color: var(--hover-clr);
 }
