@@ -13,6 +13,7 @@
 	</div>
 	<link rel="stylesheet" href="css/Scss.css">
 	<link rel="stylesheet" href="css/loader.css">
+	<link rel="stylesheet" href="css/timetable.css">
  	<script src="js/js.js"></script>
 	<script src="js/authCheck.js"></script>
 	<script src="js/Loader.js"></script>
@@ -62,5 +63,123 @@
 			</li>
 		</ul>
 	</nav>
+
+	<div class="content">
+		<div class="table">
+			<table id="myTable">
+				<tr>
+					<th>Time</th>
+					<th><input type="time" id="time1"></th>
+					<th><input type="time" id="time2"></th>
+					<th>Break Time</th>
+					<th><input type="time" id="time3"></th>
+					<th><input type="time" id="time4"></th>
+					<th>Break Time</th>
+					<th><input type="time" id="time5"></th>
+					<th><input type="time" id="time6"></th>
+					<th>Break Time</th>
+					<th><input type="time" id="time7"></th>
+				</tr>
+				<!-- 1st row - Monday -->
+				<tr>
+					<th>Monday</th>
+					<td><textarea placeholder="Task/Period" id="Mon1"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Mon2"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Mon3"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Mon4"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Mon5"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Mon6"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Mon7"></textarea></td>
+				</tr>
+				<!-- 2nd row - Tuesday -->
+				<tr>
+					<th>Tuesday</th>
+					<td><textarea placeholder="Task/Period" id="Tues1"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Tues2"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Tues3"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Tues4"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Tues5"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Tues6"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Tues7"></textarea></td>
+				</tr>
+				<!-- 3rd row - Wednesday -->
+				<tr>
+					<th>Wednesday</th>
+					<td><textarea placeholder="Task/Period" id="Wed1"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Wed2"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Wed3"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Wed4"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Wed5"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Wed6"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Wed7"></textarea></td>
+				</tr>
+				<!-- 4th row - Thursday -->
+				<tr>
+					<th>Thursday</th>
+					<td><textarea placeholder="Task/Period" id="Thurs1"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Thurs2"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Thurs3"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Thurs4"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Thurs5"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Thurs6"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Thurs7"></textarea></td>
+				</tr>
+				<!-- 5th row - Friday -->
+				<tr>
+					<th>Friday</th>
+					<td><textarea placeholder="Task/Period" id="Fri1"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Fri2"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Fri3"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Fri4"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Fri5"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Fri6"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Fri7"></textarea></td>
+				</tr>
+				<!-- 6th row - Saturday -->
+				<tr>
+					<th>Saturday</th>
+					<td><textarea placeholder="Task/Period" id="Sat1"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Sat2"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Sat3"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Sat4"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Sat5"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Sat6"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Sat7"></textarea></td>
+				</tr>
+				<!-- 7th row - Sunday -->
+				<tr>
+					<th>Sunday</th>
+					<td><textarea placeholder="Task/Period" id="Sun1"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Sun2"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Sun3"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Sun4"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Sun5"></textarea></td>
+					<td><textarea placeholder="Task/Period" id="Sun6"></textarea></td>
+					<td class="break" colspan="1"></td>
+					<td><textarea placeholder="Task/Period" id="Sun7"></textarea></td>
+				</tr>
+			</table>
+		</div>
+	</div>
 </body>
 </html>
