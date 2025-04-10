@@ -5,7 +5,7 @@ window.addEventListener("load", function () {
     const userData = JSON.parse(localStorage.getItem("user"));
 
     // Define an array of greetings
-    const greetings = ["Hi", "Hello", "Welcome", "Bonjour", "Hola", "Greetings", "Hey there"];
+    const greetings = ["Hi", "Hello", "Welcome", "Bonjour", "Hola", "Greetings", "Hey there", "Sup'"];
 
     // Randomly select a greeting
     const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];

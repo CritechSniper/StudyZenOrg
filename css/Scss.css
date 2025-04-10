@@ -116,5 +116,44 @@ body {
 }
 
 #toggle-btn.rotate svg {
-    transform: rotate(180deg);
+    transform: rotate(0deg);
 }
+#toggle-btn svg{
+	transform: rotate(180deg);
+}
+
+@media(max-width: 800px){
+	body{
+	  grid-template-columns: 1fr;
+	}
+	.content{
+	  padding: 2em 1em 60px 1em;
+	}
+	#sidebar{
+	  height: 60px;
+	  width: 100%;
+	  border-right: none;
+	  border-top: 1px solid var(--line-clr);
+	  padding: 0;
+	  position: fixed;
+	  top: unset;
+	  bottom: 0;
+	  z-index: 10;
+  
+	  > ul{
+		padding: 0;
+		display: grid;
+		grid-auto-columns: 1fr;
+		grid-auto-flow: column;
+		align-items: center;
+		overflow-x: scroll;
+	  }
+	  ul li{
+		height: 100%;
+	  }
+  
+	  ul li span, ul li:first-child{
+		display: none;
+	  }
+	}
+  }

@@ -118,7 +118,7 @@
   }  
 
   .card {
-    background-color: var(--acent-clr);
+    background-color: var(--btn-clr);
     color: var(--text-clr);
     border-radius: 1rem;
     box-shadow: 0 6px 10px rgba(0, 0, 0, 0.5);
@@ -138,6 +138,7 @@
   
   .card:hover {
     transform: translateY(-10px);
+    background-color: var(--btn-hover-clr);
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.75);
   }
   
