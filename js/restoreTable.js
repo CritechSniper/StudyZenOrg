@@ -3,7 +3,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebas
 import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
 
-// Your Firebase config (logindata173)
+// Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyCnVEwq0ZFqrQroNRaMaU1iFNLO5X0P2MY",
   authDomain: "logindata173.firebaseapp.com",
@@ -19,7 +19,7 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-// Restore timetable when DOM is fully loaded
+// Restore timetable on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
   onAuthStateChanged(auth, (user) => {
     if (user) {
@@ -29,15 +29,35 @@ document.addEventListener("DOMContentLoaded", () => {
       get(timetableRef).then((snapshot) => {
         if (snapshot.exists()) {
           const data = snapshot.val();
+
+          // Restore task/period cells
           for (const day in data) {
-            for (const period in data[day]) {
-              const id = day + period.replace("Period", "");
-              const element = document.getElementById(id);
-              if (element) {
-                element.value = data[day][period];
+            if (day !== "Times") {
+              for (const period in data[day]) {
+                const id = day + period.replace("Period", "");
+                const element = document.getElementById(id);
+                if (element) {
+                  element.value = data[day][period];
+                }
               }
             }
           }
+
+          // Restore time input fields
+          if (data["Times"]) {
+            for (let i = 1; i <= 7; i++) {
+              const periodTime = data["Times"][`Period${i}`];
+              if (periodTime) {
+                const timeStart = document.getElementById(`time${i * 2 - 1}`);
+                const timeEnd = document.getElementById(`time${i * 2}`);
+                if (timeStart && timeEnd) {
+                  timeStart.value = periodTime.start || "";
+                  timeEnd.value = periodTime.end || "";
+                }
+              }
+            }
+          }
+
           console.log("✅ Timetable restored successfully!");
         } else {
           console.log("📭 No timetable data found for this user.");

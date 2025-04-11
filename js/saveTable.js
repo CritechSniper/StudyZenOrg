@@ -1,4 +1,5 @@
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+// Import Firebase modules
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js"; 
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 
@@ -23,6 +24,7 @@ function saveTimetableData(userId) {
   const days = ["Mon", "Tues", "Wed", "Thurs", "Fri"];
   const timetableData = {};
 
+  // Save period task data
   days.forEach((day) => {
     timetableData[day] = {};
     for (let i = 1; i <= 7; i++) {
@@ -32,6 +34,19 @@ function saveTimetableData(userId) {
       }
     }
   });
+
+  // Save time input values
+  timetableData["Times"] = {};
+  for (let i = 1; i <= 7; i++) {
+    const timeStart = document.getElementById(`time${i * 2 - 1}`);
+    const timeEnd = document.getElementById(`time${i * 2}`);
+    if (timeStart && timeEnd) {
+      timetableData["Times"][`Period${i}`] = {
+        start: timeStart.value,
+        end: timeEnd.value
+      };
+    }
+  }
 
   // Save to Firebase under users/{uid}/timetable
   set(ref(database, "users/" + userId + "/timetable"), timetableData)
@@ -54,4 +69,3 @@ document.getElementById("saveTable").addEventListener("click", () => {
     }
   });
 });
-
