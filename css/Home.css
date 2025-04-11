@@ -54,20 +54,17 @@
 @keyframes textAnimation {
   0% {
     stroke-dashoffset: 40;
-    /* transform: scale(1); */
     height: 100px;
     width: 420px;
   }
   60% {
     fill: transparent;
-    /* transform: scale(1); */
     height: 100px;
     width: 420px;
   }
   100% {
     fill: #fff;
     stroke-dashoffset: 0;
-    /* transform: scale(0.5); */
     height: 100px;
     width: 420px;
 
@@ -78,8 +75,6 @@
     display: flex;
     width: 420px;
     height: 100px;
-    /* position: absolute; */
-    /* top: 50vh;*/
     justify-content: center;
     z-index: 0;
     animation: svgSize 3s ease-in-out forwards;
