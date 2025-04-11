@@ -11,7 +11,4 @@ function toggleSidebar() {
     sidebar.classList.toggle("close");
     toggleButton.classList.toggle("rotate"); // Apply rotate class to button
     saveTable.classList.toggle("close");
-
-    console.log('%c' + (sidebar.classList.contains("close") ? "Closing sidebar..." : "Opening sidebar..."), 'color: lightgray;');
-
 }

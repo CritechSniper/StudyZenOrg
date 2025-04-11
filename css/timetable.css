@@ -86,6 +86,10 @@ th, td {
     padding: 20px;
     border-radius: 5px;
     cursor: pointer;
+    transition: width 0.3s ease-in-out;
+}
+#saveTable.close {
+    width: calc(100vw - 220px);
 }
 #saveTable:hover {
     background-color: var(--btn-hover-clr);
