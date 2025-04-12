@@ -1,0 +1,53 @@
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+#noteInput.placeholder:empty::before {
+    content: attr(data-placeholder);
+    color: #000000;
+    pointer-events: none;
+    display: block;
+  }
+#noteInput {
+    border-radius: 6px;
+    padding: 10px;
+    min-height: 300px;
+    font-family: Tahoma;
+    position: relative;
+    outline: none;
+
+    background-color: #ffffff;
+    margin: 10px;
+    color: #000000;
+}
+#toolbar {
+    display: flex;
+    position: fixed;
+    top: 284px;
+    left: 70px;
+    height: fit-content;
+    width: fit-content;
+    background: #ffffff;
+    padding: 8px;
+    border-radius: 6px;
+
+
+    font-family: Tahoma;
+    z-index: 1000;
+}
+#toolbar button {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    padding-bottom: 20px;
+}
+#toolbar button:hover {
+    background-color: #a7a7a7;
+    cursor: pointer;
+}
+
+#toolbar button.active {
+    color: blue;
+    background-color: #a7a7a7;
+}
