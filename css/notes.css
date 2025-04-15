@@ -1,130 +1,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
 
 :root {
-  --base-clr: #11121a;
-  --line-clr: #42434a;
-  --hover-clr: #222533;
-  --text-clr: #e6e6ef;
-  --acent-clr: #5e63ff;
-  --secondary-text-clr: #b0b3c1;
+    --base-clr:#11121a;
+    --line-clr:#42434a;
+    --hover-clr:#222533;
+    --text-clr:#e6e6ef;
+    --acent-clr:#5e63ff;
+    --secondary-text-clr:#b0b3c1;
+    --btn-hover-clr:hsl(240, 100%, 75%);
+    --btn-clr:hsl(240, 100%, 70%);
 }
 
-body {
-  overflow: none;
+*{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-#saveNotes{
-    position: fixed;
-    bottom: 0;
-    right: 0;
+.content {
+    width: 100%;
+    height: 100%;
+}
+#noteInput.placeholder:empty::before {
+    content: attr(data-placeholder);
+    color: #707070;
+    pointer-events: none;
+    display: block;
+  }
+#noteInput {
+    border-radius: 6px;
+    padding: 30px;
+    max-width: 100%;
+    min-height: 300px;
+    max-height: 100%;
+    font-family: Tahoma;
+    position: relative;
+    outline: none;
+
+    background-color: #ffffff;
     margin: 10px;
-    padding: 10px;
-    background-color: var(--acent-clr);
-    color: white;
-    border-radius: 5px;
-    border: none;
-    cursor: pointer;
+    color: #000000;
+    text-wrap: wrap;
 }
 #toolbar {
-  color: var(--text-clr);
-  background-color: var(--acent-clr);
-  border: none;
-}
+    display: flex;
+    height: fit-content;
+    width: fit-content;
+    background: transparent;
+    backdrop-filter: blur(0.8px);
 
-#editor {
-  height: calc(100vw - 27px);
-  max-width: calc(100vw - 60px);
-  background-color: white;
-  color: black;
-  border-top: none;
-  padding: 10px;
-  text-wrap: normal;
+    padding: 8px;
+    margin: 10px;
+    margin-bottom: 0;
+    border-radius: 6px;
+    
+    font-family: Tahoma;
+    z-index: 1;
 }
+#saveNote {
+    display: flex;
 
-/* General font */
-* {
-  font-family: Tahoma, sans-serif !important;
-}
+    height: 46px;
+    width: 106px;
 
-/* Toolbar */
-.ql-toolbar.ql-snow {
-  border: 1px solid #ccc;
-  box-sizing: border-box;
-  font-family: 'Tahoma', sans-serif;
-  padding: 8px;
-  background-color: var(--acent-clr) !important;
-}
+    background-color: var(--btn-clr); /* Fallback for transparency */
+    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    backdrop-filter: blur(10px);
 
-.ql-toolbar.ql-snow .ql-picker-label {
-  border: 1px solid transparent;
-}
+    border-radius: 6px;
+    align-items: center;
+    justify-content: center;
 
-/* Dropdown */
-.ql-snow .ql-picker-options {
-  border: 1px solid #ccc;
-  box-shadow: rgba(0, 0, 0, 0.2) 0 2px 8px;
-  background-color: var(--acent-clr);
-  padding: 4px;
-}
-
-.ql-snow .ql-picker.ql-expanded .ql-picker-options {
-    border: none !important;
-}
-
-.ql-snow .ql-picker.ql-expanded .ql-picker-label {
-    background-color: rgba(255, 255, 255, 0.3);
+    font-family: Tahoma;
+    font-size: 16px;
     border: none;
-}
+    cursor: pointer;
+    margin: 10px;
+    margin-top: 0;
 
-.ql-snow .ql-picker .ql-picker-item:hover {
-  background-color: #a3c2f3 !important;
+    z-index: 1;
 }
-
-/* Dropdown item style */
-.ql-snow .ql-picker-item {
-  padding: 4px 8px;
-  margin: 3px;
-  display: inline-block;
-  align-items: center;
-  transition: background-color 0.2s ease, box-shadow 0.2s ease;
+#toolbar button {
+    font-size: 20px;
+    width: 30px;
+    height: 30px;
+    border: none;
+    background: none;
+    padding-bottom: 20px;
 }
-
-.ql-snow .ql-picker-item:hover {
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+#toolbar button:hover, .list button:hover svg{
+    background-color: #cdcdcd;
+    cursor: pointer;
 }
-
-/* Tooltip */
-.ql-snow .ql-tooltip {
-  background-color: #fff;
-  border: 1px solid #ccc;
-  box-shadow: 0px 0px 5px #ddd;
-  color: #444;
-  padding: 5px 12px;
-  white-space: nowrap;
+#toolbar button:active, .list button:active svg{
+    scale: 0.9;
+    transform-origin: center;
 }
-
-/* Picker label text */
-.ql-snow .ql-picker.ql-header .ql-picker-label::before {
-  content: 'Normal';
+#toolbar button.active {
+    color: blue;
 }
-
-.ql-snow .ql-picker.ql-header .ql-picker-item[data-value="1"]::before {
-  content: 'Heading 1';
+.buttons {
+    display: flex;
+    flex-direction: column;
+    right: 0;
+    justify-content: center;
+    position: absolute;
 }
-
-/* Formatting spacing */
-.ql-toolbar.ql-snow .ql-formats {
-  margin-right: 15px;
+.list{
+    display: flex;
+    justify-content: center;
+    border: none;
+    z-index: 1;
 }
-
-.ql-toolbar button.ql-active .ql-stroke,
-.ql-toolbar button.ql-active .ql-stroke-miter,
-.ql-toolbar button.ql-active .ql-fill {
-    stroke: white !important;
-    color: white !important;
+.list svg {
+    fill: black;
+    background-color: white;
+    padding: 8px;
 }
-.ql-toolbar button.ql-active{
-    background-color: rgba(255, 255, 255, 0.3);
-
+.list button {
+    justify-content: center;
+    align-items: center;
+    background-color: white;
+    border: none;
+    padding: 0px;
+    margin: 0px;
+    cursor: pointer;
 }
-
-  
