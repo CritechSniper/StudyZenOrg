@@ -24,6 +24,20 @@
     pointer-events: none;
     display: block;
   }
+#autoSave{
+    position: absolute;
+    color: #b4b4b4;
+    right: 20px;
+    top: 340px;
+    z-index: 1;
+}
+label{
+    position: absolute;
+    color: #b4b4b4;
+    right: 20px;
+    top: 315px;
+    z-index: 1;
+}
 #noteInput {
     border-radius: 6px;
     padding: 30px;
@@ -76,6 +90,9 @@
     margin-top: 0;
 
     z-index: 1;
+}
+#saveNote:active {
+    scale: 0.95;
 }
 #toolbar button {
     font-size: 20px;

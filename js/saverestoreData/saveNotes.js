@@ -19,6 +19,9 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getDatabase(app);
 
+const autoSave = document.getElementById('autoSave');
+const autoSaveToggle = document.getElementById('autoSavetoggle');
+
 window.addEventListener("load", () => {
     onAuthStateChanged(auth, (user) => {
         if (user) {
@@ -30,26 +33,64 @@ window.addEventListener("load", () => {
             // Manual save on button click
             saveButton.addEventListener("click", () => {
                 const content = noteInput.innerHTML;
-                console.log("Saving content:", content);
                 set(noteRef, content)
-                    .then(() => console.log("✅ Note saved"), alert("Note saved successfully!"))
-                    .catch((err) => console.error("❌ Save failed:", err));
+                .then(() => {
+                    console.log("✅ Note saved");
+                    saveButton.innerHTML = '✅ Saved!';
+                
+                    // Restore button text after 2 seconds
+                    setTimeout(() => {
+                        saveButton.innerHTML = 'Save Notes';
+                    }, 2000);
+                })
+                
+                    .catch((err) => {
+                        console.error("❌ Save failed:", err);
+                        autoSave.innerHTML = "❌ Error Saving";
+                    });
             });
 
-            // Auto-save every 5 seconds if content changed
+            // Auto-save with toggle and debounce
             let lastSavedContent = "";
+            let saveTimeout;
 
-            setInterval(() => {
+            noteInput.addEventListener("input", () => {
+                if (!autoSaveToggle.checked) return; // Auto-save disabled
+
                 const currentContent = noteInput.innerHTML;
-                if (currentContent !== lastSavedContent) {
-                    set(noteRef, currentContent)
-                        .then(() => {
-                            console.log("💾 Auto-saved");
-                            lastSavedContent = currentContent;
-                        })
-                        .catch((err) => console.error("❌ Auto-save failed:", err));
+                autoSave.innerHTML = "Saving...";
+
+                clearTimeout(saveTimeout);
+
+                saveTimeout = setTimeout(() => {
+                    if (currentContent !== lastSavedContent) {
+                        set(noteRef, currentContent)
+                            .then(() => {
+                                console.log("💾 Auto-saved");
+                                lastSavedContent = currentContent;
+                                autoSave.innerHTML = "✅Saved";
+                            })
+                            .catch((err) => {
+                                console.error("❌ Auto-save failed:", err);
+                                autoSave.innerHTML = "❌ Error Saving";
+                            });
+                    } else {
+                        autoSave.innerHTML = "✅Saved";
+                    }
+                }, 2000);
+            });
+
+            // Update status when toggle is changed
+            autoSaveToggle.addEventListener("change", () => {
+                if (autoSaveToggle.checked) {
+                    autoSave.innerHTML = "✅ Auto-save ON";
+                } else {
+                    autoSave.innerHTML = "🛑 Auto-save OFF";
                 }
-            }, 5000); // 5000 ms = 5 sec
+            });
+
+            // Initial label
+            autoSave.innerHTML = autoSaveToggle.checked ? "✅ Auto-save ON" : "🛑 Auto-save OFF";
 
         } else {
             console.warn("⚠️ User not signed in");
