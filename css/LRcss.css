@@ -137,3 +137,9 @@ a {
     border-radius: 20%;
     background-color: var(--acent-clr);
 }
+/* Chrome, Safari, Edge, Opera */
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

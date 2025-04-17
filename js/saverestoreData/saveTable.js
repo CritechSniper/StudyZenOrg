@@ -24,10 +24,10 @@ function saveTimetableData(userId) {
   const days = ["Mon", "Tues", "Wed", "Thurs", "Fri"];
   const timetableData = {};
 
-  // Save period task data
+  // Save period task data (now supports 9 periods)
   days.forEach((day) => {
     timetableData[day] = {};
-    for (let i = 1; i <= 7; i++) {
+    for (let i = 1; i <= 9; i++) {
       const cell = document.getElementById(`${day}${i}`);
       if (cell) {
         timetableData[day][`Period${i}`] = cell.value;
@@ -35,9 +35,9 @@ function saveTimetableData(userId) {
     }
   });
 
-  // Save time input values
+  // Save time input values (now supports 9 periods = 18 inputs)
   timetableData["Times"] = {};
-  for (let i = 1; i <= 7; i++) {
+  for (let i = 1; i <= 9; i++) {
     const timeStart = document.getElementById(`time${i * 2 - 1}`);
     const timeEnd = document.getElementById(`time${i * 2}`);
     if (timeStart && timeEnd) {

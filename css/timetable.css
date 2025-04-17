@@ -63,10 +63,10 @@ th, td {
     border-top: none;
     border-bottom: none;
 }
-#top1, #top2, #top3{
+#top1, #top2, #top3, #top4{
     border-top: 2px solid var(--acent-clr);
 }
-#bottom1, #bottom2, #bottom3 {
+#bottom1, #bottom2, #bottom3, #bottom4 {
     border-bottom: 2px solid var(--acent-clr);
 }
 
