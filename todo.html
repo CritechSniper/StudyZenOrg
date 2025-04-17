@@ -11,9 +11,12 @@
 	</div>
 	<link rel="stylesheet" href="css/Scss.css">
 	<link rel="stylesheet" href="css/loader.css">
+	<link rel="stylesheet" href="css/todo.css">
  	<script src="js/js.js"></script>
 	<script src="js/authCheck.js"></script>
 	<script src="js/Loader.js"></script>
+	<script src="js/todo.js"></script>
+
 	<nav id="sidebar" class="close">
 		<ul>
 			<li>
@@ -61,7 +64,24 @@
 		</ul>
 	</nav>
 	<div class="content">
+		<h1>Checklist</h1>
+	  
+		<div class="todo-header">
+		  <span class="mark-col">Mark</span>
+		  <span class="name-col">Name</span>
+		  <span class="date-col">Date</span>
+		</div>
+	  
+		<div class="list" id="todo-list">
+		  <div class="line">
+			<input id="tickmark" type="checkbox">
+			<input id=" "type="text" class="line-context">
+			<button class="delete-btn">✖</button>
+		  </div>
+		</div>
 		
-	</div>
+		<button class="add-btn" id="add-btn">+ Add</button>
+	  </div>
+	  
 </body>
 </html>
