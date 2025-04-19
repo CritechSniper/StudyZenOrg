@@ -4,6 +4,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
     <link rel="stylesheet" href="css/LRcss.css">
+	  <script src="js/access/checkaccess.js"></script>
 </head>
 <body>
 
@@ -44,6 +45,8 @@
         const database = getDatabase(app);
       
         console.log("Firebase initialized:", app);
+        
+        document.addEventListener("keydown", e => e.key === "Enter" && document.getElementById("loginButton").click());
       </script>
     <script type="module" src="js/loginregister/Rjs.js"></script>
 </body>

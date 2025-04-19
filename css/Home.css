@@ -12,10 +12,12 @@
 }
 
 .content {
-    display: flex;
-    margin: 20px 0px 0px 20px;;
-    flex-direction: column;
-    overflow-y: auto;
+  left: 0;
+  top: 0;
+  display: flex;
+  margin: 20px 0px 0px 20px;;
+  flex-direction: column;
+  overflow-y: auto;
 }
 
 .content2{
@@ -102,15 +104,15 @@
 
 
 
-
-
 .card-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
     gap: 20px;
     padding: 20px;
-  }  
+    margin-top: 10vw;
+  }
 
   .card {
     background-color: var(--btn-clr);
@@ -121,7 +123,7 @@
     min-width: 200px;
     max-width: 30px;
     padding: 1rem;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: all 0.3s ease-in-out, rotate 0.2s ease-in-out;
     
     display: flex;
     flex-grow: 1;
@@ -168,4 +170,14 @@
     font-size: 0.95rem;
     opacity: 0.8;
   }
-  
+
+  @media (min-width: 856px) {
+    .card:hover:last-child {
+      rotate: 5deg;
+      transform: translateY(0px);
+    }
+    .card:hover:first-child {
+      rotate: -5deg;
+      transform: translateY(-0px);
+    }
+  }

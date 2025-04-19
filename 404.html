@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --base-clr:#11121a;
+            --line-clr:#42434a;
+            --hover-clr:#222533;
+            --text-clr:#e6e6ef;
+            --acent-clr:#5e63ff;
+            --secondary-text-clr:#b0b3c1;
+            --btn-hover-clr:hsl(240, 100%, 75%);
+            --btn-clr:hsl(240, 100%, 70%);
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--base-clr);
+            color: var(--secondary-text-clr);
+            text-align: center;
+            padding: 50px;
+        }
+        .container {
+            justify-content: center;
+            align-items: center;
+            max-width: 600px;
+            margin: auto;
+            background: var(--acent-clr);
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: var(--text-clr);
+        }
+        a {
+            text-decoration: none;
+            border-radius: 5px;
+            color: var(--hover-clr);
+            padding: auto;
+            transition: all 0.3s ease-in-out;
+        }
+        a:hover {
+            color: var(--base-clr);
+            background-color: lightblue;
+            padding: 10px 20px;
+            border-radius: 5px;
+        }
+    </style>
+<body>
+    <div class="container">
+        <h1>Uhh... Seems like you're lost?</h1>
+        <p>How did you even end up here?</p>
+        <a href="Home.html">Go back
+        </a>
+    </div>
+
+</html>
