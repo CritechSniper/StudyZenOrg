@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Join Classroom</title>
+  <link rel="stylesheet" href="css/LRcss.css">
+  <script src="js/access/checkaccess.js"></script> <!-- Optional: Protect this page -->
+</head>
+<body>
+
+  <div class="container">
+    <h1>Join Classroom</h1>
+    <input type="text" id="classCodeInput" placeholder="Enter class code" />
+    <button id="joinClassButton">Join Class</button>
+    <div class="acc-switch"><p>Go back to <a href="home.html">Home</a></p></div>
+  </div>
+
+  <div class="pic1"></div>
+  <div class="pic2"></div>
+
+  <!-- Firebase SDK -->
+  <script type="module" src="https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js"></script>
+
+  <!-- Custom Script -->
+  <script type="module" src="js/loginregister/CJjs.js"></script>
+  <script>
+    document.addEventListener("keydown", e => {
+      if (e.key === "Enter") document.getElementById("joinClassButton").click();
+    });
+  </script>
+
+</body>
+</html>
