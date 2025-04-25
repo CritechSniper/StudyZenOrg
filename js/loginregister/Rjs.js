@@ -23,24 +23,41 @@ const database = getDatabase(app);
 
 // Handle user registration
 document.getElementById("registerButton").addEventListener("click", function () {
-  const email = document.getElementById("email").value;
+  const firstName = document.getElementById("firstName").value.trim(); // Class name
+  const lastName = document.getElementById("lastName").value.trim();   // Optional section
+  const emailInput = document.getElementById("email").value.trim();
+  const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value;
-  const firstName = document.getElementById("firstName").value;
-  const lastName = document.getElementById("lastName").value;
-  const username = document.getElementById("username").value;
+
+  // Determine if this is a class account (no email/username/lastName)
+  const isClassAccount = !emailInput && !lastName && !username;
+
+  const email = isClassAccount ? `${firstName.toLowerCase()}@fakeuser.com` : emailInput;
 
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
       console.log("User registered:", user);
 
-      // Store additional user data in Firebase Database
-      set(ref(database, "users/" + user.uid), {
+      // Build user data
+      const userData = {
         firstName: firstName,
-        lastName: lastName,
-        username: username,
-        email: email,
-      })
+        createdAt: new Date().toISOString()
+      };
+
+      if (!isClassAccount) {
+        userData.lastName = lastName;
+        userData.email = emailInput;
+        userData.username = username;
+      } else {
+        userData.type = "class";
+        if (lastName) {
+          userData.section = lastName;
+        }
+      }
+
+      // Store user data in Firebase Realtime Database
+      set(ref(database, "users/" + user.uid), userData)
         .then(() => {
           alert("User registered successfully!");
           window.location.href = "login.html";

@@ -59,15 +59,33 @@ document.addEventListener("DOMContentLoaded", () => {
           }
 
           console.log("✅ Timetable restored successfully!");
+          console.log("%c-Page loaded-", "background-color: green; font-size: 20px; color: white; border-radius: 5px;");
+
+          let loader = document.querySelector(".loader");
+          if (loader) {
+              loader.style.opacity = "0"; // Trigger fade-out animation
+          }
         } else {
           console.log("📭 No timetable data found for this user.");
+          let loader = document.querySelector(".loader");
+          if (loader) {
+              loader.style.opacity = "0"; // Trigger fade-out animation
+          }
         }
       }).catch((error) => {
         console.error("❌ Error restoring timetable:", error);
+        let loader = document.querySelector(".loader");
+        if (loader) {
+            loader.style.opacity = "0"; // Trigger fade-out animation
+        }
       });
 
     } else {
       console.log("🚫 No user signed in.");
+      let loader = document.querySelector(".loader");
+      if (loader) {
+          loader.style.opacity = "0"; // Trigger fade-out animation
+      }
     }
   });
 });

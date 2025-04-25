@@ -1,8 +1,8 @@
 console.log("%cLogin script connected", "background-color: blue; color: white; border-radius: 5px;");
 
 // Import Firebase modules
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
+import { getAuth, signInWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 
 // Firebase config
@@ -23,38 +23,60 @@ const database = getDatabase(app);
 
 // Handle login
 document.getElementById("loginButton").addEventListener("click", function () {
-  const email = document.getElementById("email").value;
+  const usernameInput = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value;
 
-  signInWithEmailAndPassword(auth, email, password)
-    .then((userCredential) => {
-      const user = userCredential.user;
+  if (!usernameInput || !password) {
+    alert("Please enter both username and password.");
+    return;
+  }
 
-      console.log("User logged in:", user);
+  // Step 1: Search users by username
+  get(ref(database, "users")).then((snapshot) => {
+    if (snapshot.exists()) {
+      const users = snapshot.val();
+      let matchedUser = null;
+      let matchedUID = null;
 
-      // Retrieve user data from Firebase Database
-      get(ref(database, "users/" + user.uid))
-        .then((snapshot) => {
-          if (snapshot.exists()) {
-            const userData = snapshot.val();
-            console.log("User data:", userData);
+      for (const uid in users) {
+        const user = users[uid];
+        if (
+          (user.username && user.username === usernameInput) || // Match for regular users
+          (user.firstName && user.type === "class" && user.firstName === usernameInput) // Match for class accounts
+        ) {
+          matchedUser = user;
+          matchedUID = uid;
+          break;
+        }
+      }
+
+      if (matchedUser) {
+        // Get email for login
+        const emailToUse = matchedUser.email || `${matchedUser.firstName.toLowerCase()}@fakeuser.com`;
+
+        // Step 2: Sign in with found email and entered password
+        signInWithEmailAndPassword(auth, emailToUse, password)
+          .then((userCredential) => {
+            console.log("User logged in:", userCredential.user);
 
             // Save user data to local storage
-            localStorage.setItem("user", JSON.stringify(userData));
+            localStorage.setItem("user", JSON.stringify(matchedUser));
 
             alert("Login successful!");
-            window.location.href = "profile.html"; // Redirect to homepage
-          } else {
-            console.log("No user data found");
-            alert("User data not found. Please register again.");
-          }
-        })
-        .catch((error) => {
-          console.error("Error retrieving user data:", error);
-        });
-    })
-    .catch((error) => {
-      console.error("Login failed:", error);
-      alert("Login failed: " + error.message);
-    });
+            window.location.href = "profile.html";
+          })
+          .catch((error) => {
+            console.error("Login failed:", error);
+            alert("Login failed: " + error.message);
+          });
+      } else {
+        alert("No account found with that username.");
+      }
+    } else {
+      alert("No users registered.");
+    }
+  }).catch((error) => {
+    console.error("Error fetching user data:", error);
+    alert("Error checking username: " + error.message);
+  });
 });
