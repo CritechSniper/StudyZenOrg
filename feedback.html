@@ -61,5 +61,46 @@
 			</li>
 		</ul>
 	</nav>
+
+	<div class="container">
+		<h1>Feedback Form</h1>
+		<form id="feedbackForm" action="https://formsubmit.co/603d8bef7081d9082d59222bfb2f5eb4" method="POST">
+		  <!-- Prevent spam -->
+		  <input type="hidden" name="_captcha" value="false">
+	
+		  <label for="name">Name</label>
+		  <input type="text" id="name" name="Name" required>
+	
+		  <label for="email">Email (optional)</label>
+		  <input type="email" id="email" name="Email">
+	
+		  <label for="message">Feedback</label>
+		  <textarea id="message" name="Message" required></textarea>
+	
+		  <button type="submit">Send Feedback</button>
+		</form>
+	
+		<p id="confirmation" style="display: none;">✅ Thanks for your feedback!</p>
+	  </div>
+	  <script>
+		document.getElementById('feedbackForm').addEventListener('submit', function (e) {
+		const form = this;
+		const name = form.querySelector('#name').value.trim();
+		const message = form.querySelector('#message').value.trim();
+
+		if (!name || !message) {
+			alert('Please fill in all required fields.');
+			e.preventDefault();
+			return;
+		}
+
+		// Show a thank you message after submission
+		form.addEventListener('submit', () => {
+			setTimeout(() => {
+			document.getElementById('confirmation').style.display = 'block';
+			}, 1000); // wait 1 sec to show message
+		});
+		});
+	  </script>
 </body>
 </html>
