@@ -1,11 +1,9 @@
 console.log("%cRegister script connected", "background-color: blue; color: white; border-radius: 5px;");
 
-// Import Firebase modules
-import { getAuth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getAuth, createUserWithEmailAndPassword, sendEmailVerification } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
 import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
 
-// Your Firebase config
 const firebaseConfig = {
   apiKey: "AIzaSyCnVEwq0ZFqrQroNRaMaU1iFNLO5X0P2MY",
   authDomain: "logindata173.firebaseapp.com",
@@ -16,12 +14,10 @@ const firebaseConfig = {
   appId: "1:565454636117:web:1fe752b72f64b9140640dc"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
-// Handle user registration
 document.getElementById("registerButton").addEventListener("click", function () {
   const firstName = document.getElementById("firstName").value.trim(); // Class name
   const lastName = document.getElementById("lastName").value.trim();   // Optional section
@@ -29,7 +25,6 @@ document.getElementById("registerButton").addEventListener("click", function () 
   const username = document.getElementById("username").value.trim();
   const password = document.getElementById("password").value;
 
-  // Determine if this is a class account (no email/username/lastName)
   const isClassAccount = !emailInput && !lastName && !username;
 
   const email = isClassAccount ? `${firstName.toLowerCase()}@fakeuser.com` : emailInput;
@@ -59,6 +54,19 @@ document.getElementById("registerButton").addEventListener("click", function () 
       // Store user data in Firebase Realtime Database
       set(ref(database, "users/" + user.uid), userData)
         .then(() => {
+          console.log("User data saved to database");
+
+          // Only send email verification for real accounts
+          if (!isClassAccount) {
+            sendEmailVerification(user)
+              .then(() => {
+                alert("Verification email sent! Check your inbox.");
+              })
+              .catch((error) => {
+                console.error("Error sending verification email:", error);
+              });
+          }
+
           alert("User registered successfully!");
           window.location.href = "login.html";
         })
