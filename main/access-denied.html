@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Access Denied</title>
+    <link rel="shortcut icon" href="Main Icons/S.svg" type="image/x-icon">
+    <link rel="stylesheet" href="css/LRcss.css">
+</head>
+<body>
+    <script type="module" src="js/access/getaccess.js"></script>
+    <div class="container">
+        <h1>Access Denied</h1>
+        <input type="number" id="accessCode" placeholder="4-Digit Code" autocomplete="off" required>
+        <button id="accessButton">Get Access</button>
+        <div class="acc-switch"><p>Don't have a code? <a href="mailto:waleed.gamer173@gmail.com">Get Code</a></p></div>
+    </div>
+    <div class="pic1"></div>
+    <div class="pic2"></div>
+    <script>
+        document.addEventListener("keydown", e => e.key === "Enter" && document.getElementById("accessButton").click());
+    </script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyZen</title>
+	<link rel="shortcut icon" href="Main Icons/S.svg" type="image/x-icon">
+	<link rel="stylesheet" href="css/Scss.css">
+	<link rel="stylesheet" href="css/loader.css">
+	<link rel="stylesheet" href="css/to-dolist.css">
+	<script src="js/access/checkaccess.js"></script>
+	<script src="js/js.js"></script>
+	<script src="js/addNotes.js"></script>
+	<script src="js/authCheck.js"></script>
+	<script src="js/Loader.js"></script>
+</head>
+<body>
+	<div class="loader">
+		<div class="loader-box"></div>
+		<div class="loader-text">Loading...</div>
+	</div>
+	<nav id="sidebar" class="close">
+		<ul>
+			<li>
+				<span class="logo">Dashboard</span>
+				<button onclick="toggleSidebar()" id="toggle-btn">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/></svg>
+				</button>
+			</li>
+			<li>
+                <a href="profile.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q-83 0-141.5-58.5T280-680q0-83 58.5-141.5T480-880q83 0 141.5 58.5T680-680q0 83-58.5 141.5T480-480Zm0 80q83 0 156 31.5t127 85.5q54 54 85.5 127T880-80H80q0-83 31.5-156t85.5-127q54-54 127-85.5T480-400Z"/></svg>
+                    <span>Profile</span>
+                </a>
+            </li>
+			<li>
+				<a href="home.html">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+					<span>Home</span>
+				</a>
+			</li>
+			<li>
+				<a href="timetable.html">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M200-120q-33 0-56.5-23.5T120-200v-560q0-33 23.5-56.5T200-840h560q33 0 56.5 23.5T840-760v560q0 33-23.5 56.5T760-120H200Zm0-507h560v-133H200v133Zm0 214h560v-134H200v134Zm0 213h560v-133H200v133Zm40-454v-80h80v80h-80Zm0 214v-80h80v80h-80Zm0 214v-80h80v80h-80Z"/></svg>
+					<span>Timetable</span>
+				</a>
+			</li>
+			<li>
+				<a href="notes.html">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M320-240h320v-80H320v80Zm0-160h320v-80H320v80ZM240-80q-33 0-56.5-23.5T160-160v-640q0-33 23.5-56.5T240-880h320l240 240v480q0 33-23.5 56.5T720-80H240Zm280-520v-200H240v640h480v-440H520ZM240-800v200-200 640-640Z"/></svg>
+					<span>Notes</span>
+				</a>
+			</li>
+            <li class="active">
+                <a href="todo.html">
+                    <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M360-200v-80h480v80H360Zm0-240v-80h480v80H360Zm0-240v-80h480v80H360ZM200-160q-33 0-56.5-23.5T120-240q0-33 23.5-56.5T200-320q33 0 56.5 23.5T280-240q0 33-23.5 56.5T200-160Zm0-240q-33 0-56.5-23.5T120-480q0-33 23.5-56.5T200-560q33 0 56.5 23.5T280-480q0 33-23.5 56.5T200-400Zm0-240q-33 0-56.5-23.5T120-720q0-33 23.5-56.5T200-800q33 0 56.5 23.5T280-720q0 33-23.5 56.5T200-640Z"/></svg>
+                    <span>To do</span>
+                </a>
+            </li>
+			<li>
+				<a href="feedback.html">
+					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-400h122l200-200q9-9 13.5-20.5T580-643q0-11-5-21.5T562-684l-36-38q-9-9-20-13.5t-23-4.5q-11 0-22.5 4.5T440-722L240-522v122Zm280-243-37-37 37 37ZM300-460v-38l101-101 20 18 18 20-101 101h-38Zm121-121 18 20-38-38 20 18Zm26 181h273v-80H527l-80 80ZM80-80v-720q0-33 23.5-56.5T160-880h640q33 0 56.5 23.5T880-800v480q0 33-23.5 56.5T800-240H240L80-80Zm126-240h594v-480H160v525l46-45Zm-46 0v-480 480Z"/></svg>
+					<span>Feedback</span>
+				</a>
+			</li>
+		</ul>
+	</nav>
+
+  <div class="content">
+		<div class="todo-input-grid">
+      <input placeholder="Todo name"
+        class="js-name-input name-input">
+      <input id=" "type="date" class="js-due-date-input due-date-input">
+      <button class="add-todo-button js-add-todo-button">Add</button>
+    </div><br>
+		<div class="js-todo-list todo-grid"></div>
+  </div>
+</body>
+<script>
+	let todoList = JSON.parse(localStorage.getItem('todoList')) || [];
+
+	renderTodoList();
+
+	function renderTodoList() {
+  let todoListHTML = '';
+
+  todoList.forEach(function(todoObject, index) {
+    const { name, dueDate } = todoObject;
+
+    const todoHTML = `
+      <div class="todo-item">
+        <input type="checkbox"> <div title="Task">${name}</div> | <div title="Due Date">${dueDate}</div> | <button class="delete-todo-button js-delete-todo-button">Delete</button>
+      </div>
+    `;
+
+    todoListHTML += todoHTML;
+  });
+
+		document.querySelector('.js-todo-list')
+			.innerHTML = todoListHTML;
+
+		document.querySelectorAll('.js-delete-todo-button')
+			.forEach((deleteButton, index) => {
+				deleteButton.addEventListener('click', () => {
+					todoList.splice(index, 1);
+					saveToStorage();
+					renderTodoList();
+				});
+			});
+	}
+
+	document.querySelector('.js-add-todo-button').addEventListener('click', () => {
+		addTodo();
+	});
+
+	function addTodo() {
+		const inputElement = document.querySelector('.js-name-input');
+		const name = inputElement.value;
+
+		const dateInputElement = document.querySelector('.js-due-date-input');
+		const dueDate = dateInputElement.value;
+		if(dateInputElement.value === '') {
+			alert('Add Date!')
+		} else {
+			todoList.push({ name, dueDate });
+
+			inputElement.value = '';
+			
+			saveToStorage();
+			renderTodoList();
+		}
+		
+	}
+
+	function saveToStorage() {
+		localStorage.setItem('todoList', JSON.stringify(todoList));
+	}
+
+</script>
+</html>

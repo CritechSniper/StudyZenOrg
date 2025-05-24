@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+:root {
+    --base-clr:#11121a;
+    --line-clr:#42434a;
+    --hover-clr:#222533;
+    --text-clr:#e6e6ef;
+    --acent-clr:#5e63ff;
+    --secondary-text-clr:#b0b3c1;
+    --btn-hover-clr:hsl(240, 100%, 75%);
+    --btn-clr:hsl(240, 100%, 70%);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    top: -100px;
+    left: -100px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle at center, var(--acent-clr) 0%, transparent 70%);
+    opacity: 0.2;
+    z-index: 0;
+  }
+  
+  body::after {
+    content: "";
+    position: fixed;
+    bottom: -120px;
+    right: -120px;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle at center, var(--btn-clr) 0%, transparent 70%);
+    opacity: 0.15;
+    z-index: 0;
+  }
+   
+.content {
+    overflow: auto;
+    padding: 10px;
+    width: auto;
+    height: 100%;
+}
+
+textarea, select{
+    width: 130px;
+    max-width: 130px;
+    height: 41px;
+    max-height: 41px;
+
+
+    padding: 10px;
+    display: inline-block;
+    border-radius: 4px;
+    box-sizing: border-box;
+    resize: none;
+    overflow: none;
+}
+.table input {
+    border-radius: 4px;
+    max-height: 35px;
+    max-width: 110px;
+}
+time, select {
+    color: black;
+}
+
+table{
+    border-collapse: collapse;
+    width: 100px;
+    resize: both;
+    border-collapse: collapse;
+    border: 3px solid var(--acent-clr);
+
+    border-collapse: separate;
+    border-spacing: 0px; /* This is important to make the border-radius work */
+    border-radius: 10px;
+    overflow: hidden; /* Ensures the content doesn't overflow the rounded corners */
+}
+th, td {
+    border-collapse: collapse;
+    border: 2px solid var(--acent-clr);
+    padding: 10px;
+}
+
+.break {
+    border-top: none;
+    border-bottom: none;
+}
+#top1, #top2, #top3, #top4{
+    border-top: 2px solid var(--acent-clr);
+}
+#bottom1, #bottom2, #bottom3, #bottom4 {
+    border-bottom: 2px solid var(--acent-clr);
+}
+
+#saveTable {
+    display: flex;
+    background-color: var(--btn-clr);
+    color: var(--text-clr);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: 500;
+    box-shadow: none;
+    border: none;
+
+    flex-direction: column;
+    width: calc(100vw - 80px);
+    position: absolute;
+    margin-top: 10px;
+    padding: 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: width 0.3s ease-in-out;
+}
+#saveTable.close {
+    width: calc(100vw - 220px);
+}
+#saveTable:hover {
+    background-color: var(--btn-hover-clr);
+}
+#saveTable span{
+    justify-content: center;
+    align-items: center;
+    /* position: fixed; */
+}
