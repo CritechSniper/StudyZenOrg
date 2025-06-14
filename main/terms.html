@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terms</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --base-clr:#11121a;
+            --line-clr:#42434a;
+            --hover-clr:#222533;
+            --text-clr:#e6e6ef;
+            --acent-clr:#5e63ff;
+            --secondary-text-clr:#b0b3c1;
+            --btn-hover-clr:hsl(240, 100%, 75%);
+            --btn-clr:hsl(240, 100%, 70%);
+        }
+        * {
+            box-sizing: border-box;
+            background-color: var(--base-clr);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--hover-clr);
+            border: 2px solid var(--line-clr);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        h1, p, ol, ul, li, strong {
+            /* line-height: 25px; */
+            color: var(--text-clr);
+            background-color: var(--hover-clr);
+            transition: color 0.3s ease-in-out;
+        }
+        .terms-date {
+            color: var(--secondary-text-clr);
+            margin-bottom: 10px;
+        }
+        .terms-date .date {
+            color: var(--acent-clr);
+            background-color: var(--hover-clr);
+        }
+        .brand {
+            color: var(--acent-clr);
+            text-shadow: 0 0 8px var(--acent-clr);
+            background-color: var(--hover-clr);
+            cursor: pointer;
+        }
+        ol.terms-list {
+            padding-left: 20px;
+        }
+        ol.terms-list > li > ul {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>Terms &amp; Conditions</strong></h1>
+        <p class="terms-date"><strong>Last updated:</strong> <span class="date">June 14, 2025</span></p>
+
+        <p><strong>Welcome to <span class="brand" onclick="window.location.href='home.html'">StudyZen!</span></strong> By using our website and services, you agree to the following terms:</p>
+
+        <ol class="terms-list">
+            <li>
+                <strong>Use of the Platform</strong>
+                <ul>
+                    <li><strong>StudyZen</strong> is designed for <strong>educational purposes only</strong>.</li>
+                    <li>You must <strong>not misuse</strong> the platform (e.g., hacking, spamming, or accessing others’ data without permission).</li>
+                    <li><strong>Classroom accounts</strong> are created only by <strong>admins</strong> for school use.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Accounts</strong>
+                <ul>
+                    <li>Users must provide <strong>accurate information</strong> when registering.</li>
+                    <li>You're responsible for <strong>keeping your account credentials safe</strong>.</li>
+                    <li>We reserve the right to <strong>suspend or remove accounts</strong> that violate our rules.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Content Ownership</strong>
+                <ul>
+                    <li>Any data you input (like notes or timetables) <strong>remains your property</strong>.</li>
+                    <li>We only use your data to provide <strong>StudyZen’s features and services</strong>.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Changes to the Service</strong>
+                <ul>
+                    <li><strong>Features may change or improve</strong> over time.</li>
+                    <li>We’ll do our best to <strong>notify users about major updates</strong>.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Limitation of Liability</strong>
+                <ul>
+                    <li><strong>StudyZen</strong> is provided "<strong>as-is</strong>". We’re not liable for data loss, downtime, or errors.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>

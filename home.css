@@ -15,6 +15,11 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-drag: none;  /* Disable image dragging in Safari/Chrome */
+    -moz-user-select: none;
 }
 body, html {
   width: 100%;
@@ -174,14 +179,27 @@ body::after {
 section {
     transition: all 0.3s ease;
 }
+.feature:nth-child(even) {
+    margin-left: auto;
+    margin-right: 8%;
+    border-left: 5px solid var(--acent-clr);
+}
+
+.feature:nth-child(odd) {
+    margin-right: auto;
+    margin-left: 8%;
+    border-right: 5px solid var(--acent-clr);
+}
 
 .feature {
     margin-bottom: 3rem;
-    background-color: var(--hover-clr);
     padding: 2rem;
-    border-left: 5px solid var(--acent-clr);
+    /* border-left: 5px solid var(--acent-clr); */
     border-radius: 8px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+    /* box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); */
+}
+section:hover {
+    transform: translateY(-5px);
 }
 
 .feature h2 {
@@ -198,6 +216,8 @@ section {
 .cta {
     text-align: center;
     margin-top: 4rem;
+    border-bottom: 5px solid var(--acent-clr);
+    border-radius: 10px;
 }
 
 .cta h2 {
@@ -232,7 +252,7 @@ button:focus {
     box-shadow: 0 0 5px var(--btn-hover-clr);
 }
 
-@media (min-width: 768px) and (max-width: 1023px) {
+/* @media (min-width: 768px) and (max-width: 1023px) {
     section:nth-child(even) {
         margin-left: auto;
         margin-right: 8%;
@@ -264,10 +284,4 @@ button:focus {
         margin: 20px 10px;
         transform: none !important;
     }
-}
-section:hover {
-    transform: translateY(-5px);
-}
-section:last-child:hover {
-    transform: translate(40px, 0px);
-}
+} */

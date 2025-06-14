@@ -1,26 +1,11 @@
-// Import Firebase modules
-import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
-import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
-
-// Firebase configuration
-const firebaseConfig = {
-  apiKey: "AIzaSyCnVEwq0ZFqrQroNRaMaU1iFNLO5X0P2MY",
-  authDomain: "logindata173.firebaseapp.com",
-  databaseURL: "https://logindata173-default-rtdb.asia-southeast1.firebasedatabase.app",
-  projectId: "logindata173",
-  storageBucket: "logindata173.appspot.com",
-  messagingSenderId: "565454636117",
-  appId: "1:565454636117:web:1fe752b72f64b9140640dc"
-};
-
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const auth = getAuth(app);
-const database = getDatabase(app);
-
-// Restore timetable on DOM ready
 document.addEventListener("DOMContentLoaded", () => {
+  // Immediately hide loader
+  let loader = document.querySelector(".loader");
+  if (loader) {
+    loader.style.opacity = "0"; // Trigger fade-out animation
+  }
+
+  // Then proceed with Firebase logic
   onAuthStateChanged(auth, (user) => {
     if (user) {
       const userId = user.uid;
@@ -60,32 +45,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
           console.log("✅ Timetable restored successfully!");
           console.log("%c-Page loaded-", "background-color: green; font-size: 20px; color: white; border-radius: 5px;");
-
-          let loader = document.querySelector(".loader");
-          if (loader) {
-              loader.style.opacity = "0"; // Trigger fade-out animation
-          }
         } else {
           console.log("📭 No timetable data found for this user.");
-          let loader = document.querySelector(".loader");
-          if (loader) {
-              loader.style.opacity = "0"; // Trigger fade-out animation
-          }
         }
       }).catch((error) => {
         console.error("❌ Error restoring timetable:", error);
-        let loader = document.querySelector(".loader");
-        if (loader) {
-            loader.style.opacity = "0"; // Trigger fade-out animation
-        }
       });
-
     } else {
       console.log("🚫 No user signed in.");
-      let loader = document.querySelector(".loader");
-      if (loader) {
-          loader.style.opacity = "0"; // Trigger fade-out animation
-      }
     }
   });
 });

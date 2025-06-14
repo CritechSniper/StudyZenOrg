@@ -68,15 +68,15 @@
 			<h1>Feedback Form</h1>
 			<form id="feedbackForm" action="https://formsubmit.co/603d8bef7081d9082d59222bfb2f5eb4" method="POST">
 				<!-- Prevent spam -->
-				<input type="hidden" name="_captcha" value="false">
+				<input type="hidden" name="_captcha" value="false" autocomplete="off">
 		
-				<label for="name">Name</label>
+				<label for="name">Name :</label>
 				<input type="text" id="name" name="Name" required>
 		
-				<label for="email">Email (optional)</label>
+				<label for="email">Email (optional) :</label>
 				<input type="email" id="email" name="Email">
 		
-				<label for="message">Feedback</label>
+				<label for="message">Feedback :</label>
 				<textarea id="message" name="Message" required></textarea>
 		
 				<button type="submit">Send Feedback</button>
@@ -103,6 +103,12 @@
 			document.getElementById('confirmation').style.display = 'block';
 			}, 1000); // wait 1 sec to show message
 		});
+		});
+
+		const textarea = document.getElementById('message');
+		textarea.addEventListener('input', () => {
+			textarea.style.height = 'auto'; // Reset the height
+			textarea.style.height = textarea.scrollHeight + 'px'; // Set to scroll height
 		});
 	  </script>
 </body>

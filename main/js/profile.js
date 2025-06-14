@@ -24,3 +24,4 @@ window.addEventListener("load", function () {
       document.getElementById("noUser").style.display = "block";
   }
 });
+document.addEventListener('contextmenu', e => e.preventDefault());const bgVideo = document.querySelector('.bg-video');

@@ -18,3 +18,30 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+document.addEventListener('contextmenu', e => e.preventDefault());const bgVideo = document.querySelector('.bg-video');
+
+// window.addEventListener('scroll', () => {
+//   const scrollTop = window.scrollY;
+//   const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+//   const scrollPercent = scrollTop / docHeight;
+
+//   // Invert the percentage so top = 1 and bottom = 0
+//   const opacity = 1 - Math.min(Math.max(scrollPercent, 0), 1);
+//   bgVideo.style.opacity = opacity.toFixed(2);
+// });
+window.addEventListener('scroll', () => {
+  const scrollTop = window.scrollY;
+  const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+  const scrollPercent = scrollTop / docHeight;
+
+  const fadeEnd = 0.5; // Fade ends at 50% scroll
+  let opacity;
+
+  if (scrollPercent < fadeEnd) {
+    opacity = 1 - (scrollPercent / fadeEnd); // Fades from 1 to 0 by 50% scroll
+  } else {
+    opacity = 0;
+  }
+
+  bgVideo.style.opacity = opacity.toFixed(2);
+});

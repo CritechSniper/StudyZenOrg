@@ -31,4 +31,4 @@ document.addEventListener("DOMContentLoaded", function () {
       });
     });
   });
-  
+document.addEventListener('contextmenu', e => e.preventDefault());const bgVideo = document.querySelector('.bg-video');

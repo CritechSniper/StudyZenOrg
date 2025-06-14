@@ -81,46 +81,69 @@
 			<p><i>How are you doing today?</i></p>
 
 
-			<div class="card-container">
-				<!-- Timetable Card -->
-				<div class="card" onclick="window.location.href='timetable.html'">
-					<div class="card-img-container">
-						<img src="Main Icons/Table.svg" alt="Timetable Icon" class="card-img">
-					</div>
+		<div class="card-container">
+			<!-- Timetable Card -->
+			<div class="card" id="timetable-card">
+				<div class="card-img-container">
+					<img src="Main Icons/Table.svg" alt="Timetable Icon" class="card-img">
+				</div>
+				<div class="card-content">
+					<h3>Timetable</h3>
+					<p>View your daily class schedule.</p>
+				</div>
+			</div>
 
-				  	<div class="card-content">
-						<h3>Timetable</h3>
-						<p>View your daily class schedule.</p>
-				  	</div>
+			<!-- Notes Card -->
+			<div class="card" id="notes-card">
+				<div class="card-img-container">
+					<img src="Main Icons/Notes.svg" alt="Notes Icon" class="card-img">
 				</div>
-			  
-				<!-- Notes Card -->
-				<div class="card" onclick="window.location.href='notes.html'">
-					<div class="card-img-container">
-						<img src="Main Icons/Notes.svg" alt="Notes Icon" class="card-img">
-					</div>
+				<div class="card-content">
+					<h3>Notes</h3>
+					<p>Check and review your saved notes.</p>
+				</div>
+			</div>
 
-					<div class="card-content">
-						<h3>Notes</h3>
-						<p>Check and review your saved notes.</p>
-				  	</div>
+			<!-- To-Do List Card -->
+			<div class="card" id="todo-card">
+				<div class="card-img-container">
+					<img src="Main Icons/To-do.svg" alt="To-Do Icon" class="card-img">
 				</div>
-			  
-				<!-- To-Do List Card -->
-				<div class="card">
-					<div class="card-img-container">
-						<img src="Main Icons/To-do.svg" alt="To-Do Icon" class="card-img">
-					</div>
-				  
-					<div class="card-content">
-						<h3>To-Do List</h3>
-						<p>Add and manage your tasks easily.</p>
-				  	</div>
+				<div class="card-content">
+					<h3>To-Do List</h3>
+					<p>Add and manage your tasks easily.</p>
 				</div>
-			  </div>
+			</div>
+		</div>
+
 			  
 
 		</div>
-	</div>	
+
+	</div>
+
+	<div id="pbox">
+	<div id="pcontent" onclick="event.stopPropagation()">
+		This feature is under development.
+		<br>
+		<button id="openLink">Open Feature</button>
+	</div>
+	</div>
+
+		
+
+
+	<!-- <div class="p" id="timetablep"><div class="pcontent">f<br>fsfaffafafaf</div></div>
+	<div class="p" id="notesp"></div>
+	<div class="p" id="todop"></div> -->
+
+	<footer class="fixed-footer">
+    <div class="footer-content">
+        <a href="terms.html">Terms</a> | 
+        <a href="privacy.html">Privacy Policy</a> | 
+        <a href="feedback.html">Contact Us</a>
+    </div>
+	</footer>
+
 </body>
 </html>

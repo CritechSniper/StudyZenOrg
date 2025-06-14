@@ -48,25 +48,50 @@ body::before {
 }
 .content2 {
     background-color: var(--acent-clr);
-    padding: 2px;
+    padding: 10px;
     border-radius: 10px;
 }
 
 form {
-    width: 1;
-    padding: 10px;
+    width: 500px;
+    padding: 20px;
+    padding-bottom: 0px;
     padding: none;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
+    align-items: start;
     background-color: var(--base-clr);
     border-radius: 10px;
 }
 
-.content2 textarea {
-    width: fit-content;
+.content2 textarea, input {
+    width: 100%;
+    border: none;
+    border-radius: 3px;
     resize: none;
+}
+textarea {
+    resize: none;
+    overflow: hidden;
+    min-height: 50px;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 6px 8px;
+    border-radius: 3px;
+    transition: box-shadow 0.2s, border-color 0.2s;
+}
+.content2 input {
+    height: 20px; 
+}
+form label {
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+.content2 textarea:focus, input:focus {
+    outline: none;
+    border: 2px solid var(--btn-clr);
+    border-radius: 3px;
 }
 .content button {
     margin: 20px 0px;
@@ -79,6 +104,7 @@ form {
     font-size: 1rem;
     transition: background-color 0.3s ease;
 
+    width: 100%;
     justify-content: center;
 }
 .content2 h1 {

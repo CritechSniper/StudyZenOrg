@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Privacy Policy</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+        :root {
+            --base-clr:#11121a;
+            --line-clr:#42434a;
+            --hover-clr:#222533;
+            --text-clr:#e6e6ef;
+            --acent-clr:#5e63ff;
+            --secondary-text-clr:#b0b3c1;
+            --btn-hover-clr:hsl(240, 100%, 75%);
+            --btn-clr:hsl(240, 100%, 70%);
+        }
+        * {
+            box-sizing: border-box;
+            background-color: var(--base-clr);
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif
+        }
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            padding: 30px;
+            background-color: var(--hover-clr);
+            border: 2px solid var(--line-clr);
+            border-radius: 10px;
+            transition: all 0.3s ease-in-out;
+        }
+        
+        h1, p, ol, ul, li, strong {
+            color: var(--text-clr);
+            background-color: var(--hover-clr);
+            transition: color 0.3s ease-in-out;
+        }
+        .terms-date {
+            color: var(--secondary-text-clr);
+            margin-bottom: 10px;
+        }
+        .terms-date .date {
+            color: var(--acent-clr);
+            background-color: var(--hover-clr);
+        }
+        .brand {
+            color: var(--acent-clr);
+            text-shadow: 0 0 8px var(--acent-clr);
+            background-color: var(--hover-clr);
+            cursor: pointer;
+        }
+        ol.terms-list {
+            padding-left: 20px;
+        }
+        ol.terms-list > li > ul {
+            margin-top: 5px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1><strong>Privacy Policy</strong></h1>
+        <p class="terms-date"><strong>Last updated:</strong> <span class="date">June 14, 2025</span></p>
+
+        <p><strong>Your privacy matters to us at <span class="brand" onclick="window.location.href='home.html'">StudyZen</span>.</strong> Here's how we handle your data responsibly and securely:</p>
+
+        <ol class="terms-list">
+            <li>
+                <strong>What We Collect</strong>
+                <ul>
+                    <li><strong>Account Information</strong>: First name, optional last name, username, email, and password (for regular accounts).</li>
+                    <li><strong>Classroom Info</strong>: Class name, optional section, and teacher name (for class accounts).</li>
+                    <li><strong>User Content</strong>: Timetables, notes, and tasks you save.</li>
+                    <li><strong>Access Logs</strong>: Basic usage data (non-personal), such as login times.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>How We Use Your Data</strong>
+                <ul>
+                    <li>To save and restore your study-related content.</li>
+                    <li>To personalize features for class and individual accounts.</li>
+                    <li>To improve the functionality and reliability of the platform.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Data Sharing</strong>
+                <ul>
+                    <li>We <strong>do not sell or share</strong> your data with any third parties.</li>
+                    <li>Admins may access classroom data for authorized educational purposes only.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Data Security</strong>
+                <ul>
+                    <li>All data is stored securely using <strong>Firebase</strong> infrastructure.</li>
+                    <li>We take steps to prevent unauthorized access or data loss.</li>
+                </ul>
+            </li>
+            <li>
+                <strong>Your Rights</strong>
+                <ul>
+                    <li>You may request to view, correct, or delete your data.</li>
+                    <li>Contact us if you have privacy concerns or want data removed.</li>
+                </ul>
+            </li>
+        </ol>
+    </div>
+</body>
+</html>
