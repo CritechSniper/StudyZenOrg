@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    :root {
+        --base-clr:#11121a;
+        --line-clr:#42434a;
+        --hover-clr:#222533;
+        --text-clr:#e6e6ef;
+        --acent-clr:#5e63ff;
+        --secondary-text-clr:#b0b3c1;
+        --btn-hover-clr:hsl(240, 100%, 75%);
+        --btn-clr:hsl(240, 100%, 70%);
+    }
+    body{
+        margin: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        background-color: var(--base-clr);
+        user-select: none;
+    }
+    #calculator{
+        font-family: Arial, sans-serif;
+        background-color: hsl(0, 0%, 15%);
+        border-radius: 15px;
+        max-width: 500px;
+        overflow: hidden;
+    }
+    #display{
+        width: 100%;
+        padding: 20px;
+        font-size: 5rem;
+        text-align: left;
+        border: none;
+        background-color: hsl(0, 0%, 20%);
+        color: white;
+        cursor: default;
+    }
+    #keys{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 10px;
+        padding: 25px;
+    }
+    #calculator button{
+        width: 100px;
+        height: 100px;
+        border-radius: 50px;
+        border: none;
+        background-color: hsl(0, 0%, 30%);
+        color: white;
+        font-size: 3rem;
+        font-weight: bold;
+        cursor: pointer;
+    }
+    #calculator button:hover{
+        background-color: hsl(0, 0%, 40%);
+    }
+    #calculator button:active{
+        background-color: hsl(0, 0%, 50%);
+    }
+    #calculator .operator-btn{
+        background-color: hsl(35, 100%, 55%);
+    }
+    #calculator .operator-btn:hover{
+        background-color: hsl(35, 100%, 65%);
+    }
+    #calculator .operator-btn:active{
+        background-color: hsl(35, 100%, 75%);
+    }
+    #goBack {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #5e63ff;
+            border: none;
+            border-radius: 10px;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 999;
+    }
+    #goBack svg {
+        display: block;
+    }
+    </style>
+</head>
+<body>
+    <button id="goBack" onclick="location.href='../xtras.html'">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/>
+        </svg>
+    </button>
+
+    <div id="calculator">
+        <input id="display" readonly>
+        <div id="keys">
+            <button onclick="appendToDisplay('+')" class="operator-btn">+</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('-')" class="operator-btn">-</button>
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')" class="operator-btn">*</button>
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('/')" class="operator-btn">/</button>
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()">=</button>
+            <button onclick="clearDisplay()" class="operator-btn">C</button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/mathjs@11.8.0/lib/browser/math.js"></script>
+    <script>
+        document.addEventListener('mousedown', e => e.preventDefault());
+        const display = document.getElementById("display");
+
+        function appendToDisplay(input){
+            display.value += input;
+        }
+
+        function clearDisplay(){
+            display.value = "";
+        }
+
+        function calculate(){
+            try {
+                display.value = math.evaluate(display.value);
+            } catch (error) {
+                display.value = "Error";
+            }
+        }
+    </script>
+      
+
+	<div class="loader-overlay">
+		<div class="loaderS">
+			<svg class="svg-s"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3.24 5.65"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M.39,5.65,0,4.16l1.36-.35.17-.54-.75.08L.92.87,3.24,0l0,1.05-1.36.51-.11.92,1.15-.35L2.63,4,3,3.41,2.61,5.65Z"/></g></g></svg>
+
+			<svg class="loaderWord"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.05 10"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M1.74,8a.37.37,0,0,1-.24-.1l-1-1a.33.33,0,0,1-.1-.24V2.8H.15A.13.13,0,0,1,0,2.65V1.55A.13.13,0,0,1,.15,1.4H.4V.65A.13.13,0,0,1,.55.5h1.6A.13.13,0,0,1,2.3.65V1.4h.58A.13.13,0,0,1,3,1.55v1.1a.13.13,0,0,1-.15.15H2.3V6a.25.25,0,0,0,.07.19L3,6.78A.24.24,0,0,1,3,7v.89A.13.13,0,0,1,2.87,8ZM5.65,8a.37.37,0,0,1-.24-.1L4.21,6.7a.33.33,0,0,1-.1-.24V1.55a.13.13,0,0,1,.15-.15h1.6A.13.13,0,0,1,6,1.55V6.22a.25.25,0,0,0,.28.28h.82V1.55a.13.13,0,0,1,.15-.15h1.6A.13.13,0,0,1,9,1.55v6.3A.13.13,0,0,1,8.86,8Zm6.26,0a.37.37,0,0,1-.24-.1l-1.2-1.2a.37.37,0,0,1-.1-.24V2.94a.33.33,0,0,1,.1-.24l1.2-1.2a.33.33,0,0,1,.24-.1h.92a.3.3,0,0,1,.24.1l.3.3V.15A.13.13,0,0,1,13.52,0h1.6a.13.13,0,0,1,.15.15v7.7a.13.13,0,0,1-.15.15H13.88a.17.17,0,0,1-.12,0l-.09-.07-.3-.3-.3.3a.33.33,0,0,1-.24.1Zm.71-1.4H13a.37.37,0,0,0,.26-.08.38.38,0,0,0,.07-.27V2.8h-.75c-.14,0-.23,0-.27.07a.43.43,0,0,0-.08.28v3.1a.38.38,0,0,0,.08.27A.35.35,0,0,0,12.62,6.6ZM18.4,10a.13.13,0,0,1-.15-.15V8.91c0-.08,0-.12.09-.13l.88-.22.62-.33A.21.21,0,0,0,19.93,8v-1l-.56.52a.33.33,0,0,1-.24.1l-1,0a.37.37,0,0,1-.24-.1l-1.1-1.1a.37.37,0,0,1-.1-.24V1.55a.13.13,0,0,1,.15-.15h1.6a.13.13,0,0,1,.15.15V6.07a.38.38,0,0,0,.08.27.33.33,0,0,0,.26.08h.76V1.55a.13.13,0,0,1,.15-.15h1.6a.13.13,0,0,1,.15.15V8.76a.25.25,0,0,1-.1.24l-.8.51-1,.42-.14.05-.14,0Zm5.19-2a.21.21,0,0,1-.18-.1l-.75-1.27a.23.23,0,0,1,0-.21l2-4.78-.05.2V1.49l.06.11H22.87a.13.13,0,0,1-.15-.15V.15A.13.13,0,0,1,22.87,0h2.91A.2.2,0,0,1,26,.09l.86,1.21a.2.2,0,0,1,0,.21L24.78,6.33l0-.34v.57l-.1-.16h1.89a.13.13,0,0,1,.15.15v1.3a.13.13,0,0,1-.15.15Zm7,0-.13,0-.13,0L29.3,7.69l-1.23-.41c-.12,0-.18-.16-.18-.35v-4A.33.33,0,0,1,28,2.7l1.2-1.2a.33.33,0,0,1,.24-.1h1.92a.3.3,0,0,1,.24.1l1.2,1.2a.3.3,0,0,1,.11.24V5.4H29.67l0,.8.85.28L32,6.59a.13.13,0,0,1,.11.14V7.85A.13.13,0,0,1,32,8Zm-.24-3.54h.12A.57.57,0,0,0,31,4.24a.93.93,0,0,0,.18-.6V3.52a.93.93,0,0,0-.18-.6.54.54,0,0,0-.46-.22h-.12a.56.56,0,0,0-.47.22,1,1,0,0,0-.16.6v.12a1,1,0,0,0,.16.6A.6.6,0,0,0,30.38,4.46ZM34.3,8a.13.13,0,0,1-.15-.15V1.55a.13.13,0,0,1,.15-.15h3.21a.33.33,0,0,1,.24.1L39,2.7a.33.33,0,0,1,.1.24V7.85A.13.13,0,0,1,38.9,8H37.3a.13.13,0,0,1-.15-.15V3.18c0-.19-.1-.28-.29-.28h-.81V7.85A.13.13,0,0,1,35.9,8Z"/></g></g></svg>
+		</div>
+	</div>
+	<link rel="stylesheet" href="../css/loaderS.css">
+    <script>
+    window.addEventListener('load', () => {
+        // Wait 2 seconds for loader to finish loading animation
+        setTimeout(() => {
+        const overlay = document.querySelector('.loader-overlay');
+        const loader = document.querySelector('.loaderS');
+
+        // Start fading out
+        if (overlay) overlay.style.opacity = '0';
+        if (loader) loader.style.opacity = '0';
+
+        // After fade-out completes (0.5s), hide the elements
+        setTimeout(() => {
+            if (overlay) overlay.style.display = 'none';
+            if (loader) loader.style.display = 'none';
+        }, 500); // 0.5s for opacity transition
+        }, 1400); // Wait 2s before starting fade-out
+    });
+    </script>
+
+</body>
+</html>
