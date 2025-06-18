@@ -7,15 +7,10 @@
 </head>
 <body>
 	<link rel="stylesheet" href="css/Scss.css">
-	<link rel="stylesheet" href="css/todo.css">
-	<script type="module" src="js/saverestoreData/saveTodo.js"></script>
-	<script type="module" src="js/saverestoreData/restoreTodo.js"></script>
+	<link rel="stylesheet" href="css/extras.css">
 	<script src="js/access/checkaccess.js"></script>
  	<script src="js/js.js"></script>
-	<script src="js/authCheck.js"></script>
 	<script src="js/Loader.js"></script>
-	<script src="js/todo.js"></script>
-
 	<nav id="sidebar" class="close">
 		<ul>
 			<li>
@@ -48,13 +43,13 @@
 					<span>Notes</span>
 				</a>
 			</li>
-            <li class="active">
+            <li>
                 <a href="todo.html">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M360-200v-80h480v80H360Zm0-240v-80h480v80H360Zm0-240v-80h480v80H360ZM200-160q-33 0-56.5-23.5T120-240q0-33 23.5-56.5T200-320q33 0 56.5 23.5T280-240q0 33-23.5 56.5T200-160Zm0-240q-33 0-56.5-23.5T120-480q0-33 23.5-56.5T200-560q33 0 56.5 23.5T280-480q0 33-23.5 56.5T200-400Zm0-240q-33 0-56.5-23.5T120-720q0-33 23.5-56.5T200-800q33 0 56.5 23.5T280-720q0 33-23.5 56.5T200-640Z"/></svg>
                     <span>To do</span>
                 </a>
             </li>
-			<li>
+			<li class="active">
 				<a href="xtras.html">
 					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M240-160q-33 0-56.5-23.5T160-240q0-33 23.5-56.5T240-320q33 0 56.5 23.5T320-240q0 33-23.5 56.5T240-160Zm240 0q-33 0-56.5-23.5T400-240q0-33 23.5-56.5T480-320q33 0 56.5 23.5T560-240q0 33-23.5 56.5T480-160Zm240 0q-33 0-56.5-23.5T640-240q0-33 23.5-56.5T720-320q33 0 56.5 23.5T800-240q0 33-23.5 56.5T720-160ZM240-400q-33 0-56.5-23.5T160-480q0-33 23.5-56.5T240-560q33 0 56.5 23.5T320-480q0 33-23.5 56.5T240-400Zm240 0q-33 0-56.5-23.5T400-480q0-33 23.5-56.5T480-560q33 0 56.5 23.5T560-480q0 33-23.5 56.5T480-400Zm240 0q-33 0-56.5-23.5T640-480q0-33 23.5-56.5T720-560q33 0 56.5 23.5T800-480q0 33-23.5 56.5T720-400ZM240-640q-33 0-56.5-23.5T160-720q0-33 23.5-56.5T240-800q33 0 56.5 23.5T320-720q0 33-23.5 56.5T240-640Zm240 0q-33 0-56.5-23.5T400-720q0-33 23.5-56.5T480-800q33 0 56.5 23.5T560-720q0 33-23.5 56.5T480-640Zm240 0q-33 0-56.5-23.5T640-720q0-33 23.5-56.5T720-800q33 0 56.5 23.5T800-720q0 33-23.5 56.5T720-640Z"/></svg>
 					<span>Xtras</span>
@@ -68,27 +63,15 @@
 			</li>
 		</ul>
 	</nav>
-	<div class="content">
-		<h1>To-do list</h1>
-		<p>Feature in progress. Data won't be saved—don't close or reload this page.</p>
-	  
-		<div class="todo-header">
-		  <span class="mark-col">Mark</span>
-		  <span class="name-col">Name</span>
-		  <span class="date-col">Date</span>
+	<div class="content1">
+		<div class="xtra-title">The Xtra's (More Comming Soon!)</div>
+		<div class="content2 box">
+			<button id="accuracyG" onclick="window.location.href='xtras/accuracygame.html'">Accuracy Game</button>
 		</div>
-	  
-		<div class="list" id="todo-list">
-		  <div class="line">
-			<input id="tickmark" type="checkbox">
-			<input id=" "type="text" class="line-context">
-			<button class="delete-btn"></button>
-		  </div>
-		</div>
-		
-		<button class="add-btn" id="add-btn">+ Add</button>
-	  </div>
-	  
+	</div>
+
+
+
 
 	<div class="loader-overlay">
 		<div class="loaderS">

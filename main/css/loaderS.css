@@ -21,7 +21,7 @@
   position: relative;
   width: 40px;
   height: 40px;
-  animation: lasder 1s ease-out forwards;
+  animation: lasder 0.7s ease-out forwards;
 }
 
 .svg-s {
@@ -37,8 +37,8 @@
   transform: translate(-50%, -50%) scale(0);
   margin-top: 10px;
   opacity: 0;
-  animation: revealWord 1s ease-out forwards;
-  animation-delay: 1s;
+  animation: revealWord 0.7s ease-out forwards;
+  animation-delay: 0.7s;
   height: 30px;
 }
 @keyframes lasder {

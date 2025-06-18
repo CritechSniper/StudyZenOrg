@@ -1,0 +1,596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Accuracy Test</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+    :root {
+      --base-clr: #11121a;
+      --line-clr: #42434a;
+      --hover-clr: #222533;
+      --text-clr: #e6e6ef;
+      --acent-clr: #5e63ff;
+      --secondary-text-clr: #b0b3c1;
+      --btn-hover-clr: hsl(240, 100%, 75%);
+      --btn-clr: hsl(240, 100%, 70%);
+    }
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: var(--base-clr);
+      color: var(--text-clr);
+      text-align: center;
+      padding: 30px;
+      margin: 0;
+    }
+
+    h1 {
+      margin-bottom: 10px;
+      font-weight: 600;
+    }
+
+		#gameArea {
+			position: relative;
+      width: 500px;
+      height: 500px;
+			margin: 20px auto;
+			border: 2px solid var(--line-clr);
+			background-color: var(--hover-clr);
+			border-radius: 10px;
+			overflow: hidden;
+		}
+
+		#gameArea::after {
+			content: "";
+			position: absolute;
+			display: none;
+			width: fit-content;
+			height: 40px;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: xx-large;
+			color: var(--text-clr);
+			z-index: 9999;
+		}
+
+
+		#gameArea.countdown-active::after {
+			display: block;
+			animation: changeName 4s ease-in-out forwards;
+		}
+
+		@keyframes changeName {
+			0%   { content: "Ready?"; }
+			25%  { content: "3"; }
+			50%  { content: "2"; }
+			75%  { content: "1"; }
+			100% { content: "Go!"; }
+		}
+
+    #box {
+      width: 50px;
+      height: 50px;
+      background-color: var(--acent-clr);
+      position: absolute;
+      cursor: pointer;
+      border-radius: 6px;
+      display: none;
+      transition: background-color 0.2s;
+    }
+
+    #box:hover {
+      background-color: var(--btn-hover-clr);
+    }
+
+    #score, #timer {
+      font-size: 20px;
+      margin: 10px 0;
+      color: var(--secondary-text-clr);
+    }
+
+    button {
+      padding: 10px 25px;
+      font-size: 18px;
+      background-color: var(--btn-clr);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+      margin: 10px;
+    }
+
+    button:hover {
+      background-color: var(--btn-hover-clr);
+    }
+
+    #modal {
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw;
+      height: 100vh;
+      background-color: rgba(0, 0, 0, 0.6);
+      display: none;
+      justify-content: center;
+      align-items: center;
+      z-index: 10;
+    }
+
+    #modalContent {
+      background-color: var(--hover-clr);
+      padding: 30px;
+      border-radius: 10px;
+      text-align: center;
+      color: var(--text-clr);
+      max-width: 300px;
+      width: 90%;
+    }
+
+    #highScore {
+      margin-top: 10px;
+      color: var(--secondary-text-clr);
+			font-size: small;
+    }
+
+    #leaderboard {
+      margin-top: 30px;
+    }
+
+    #leaderboard ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .leaderboard-item {
+      color: var(--secondary-text-clr);
+      margin: 3px 0;
+    }
+
+    #initialInput {
+      margin: 10px 0;
+      padding: 8px;
+      font-size: 16px;
+      border-radius: 5px;
+      border: 1px solid var(--line-clr);
+      background-color: var(--base-clr);
+      color: var(--text-clr);
+      text-align: center;
+      width: 100px;
+			height: 47px;
+    }
+
+    #endGameBtn {
+      display: none;
+    }
+
+    #timePopup button {
+      margin: 5px;
+      padding: 6px 12px;
+      background: var(--hover-clr);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    #timePopup button:hover {
+      background: var(--btn-hover-clr);
+    }
+
+    .close-modal-btn {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background-color: #e63946;
+      border: none;
+      font-size: 24px;
+      color: white;
+      padding: 1px 10px;
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .close-modal-btn:hover {
+      background-color: #d62828;
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.3);
+    }
+		#nextBox {
+			position: absolute;
+			width: 50px;
+			height: 50px;
+			background-color: rgba(255, 255, 255, 0.3);
+			border: 2px dashed #fff;
+			pointer-events: none;
+			display: none;
+			animation: nextposition 0.3s ease-in-out forwards;
+			transform-origin: center center;
+		}
+
+		@keyframes nextposition {
+			from {
+				opacity: 0;
+				scale: 1.5;
+			}
+			to {
+				opacity: 1;
+				scale: 1;
+			}
+		}
+        #goBack {
+            position: fixed;
+            top: 10px;
+            left: 10px;
+            background-color: #5e63ff;
+            border: none;
+            border-radius: 10px;
+            padding: 8px;
+            cursor: pointer;
+            z-index: 999;
+        }
+
+        #goBack svg {
+            display: block;
+        }
+  </style>
+</head>
+<body>
+    <button id="goBack" onclick="location.href='../xtras.html'">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/>
+        </svg>
+    </button>
+
+  <h1>🎯 Is Your Accuracy Good?</h1>
+  <input id="initialInput" maxlength="3" placeholder="NME" />
+  <button id="startBtn">Start Game</button>
+  <button id="endGameBtn">End Game</button>
+  <div id="timer">Time Left: 30s</div>
+  <div id="score">Score: 0</div>
+
+  <button id="setTimeBtn">Set Time</button>
+  <div id="timePopup" style="display:none; position:absolute; background:#222; padding:10px; border-radius:6px; z-index:100;">
+    <button class="timeOption" data-time="5">5s</button>
+    <button class="timeOption" data-time="10">10s</button>
+    <button class="timeOption" data-time="15">15s</button>
+    <button class="timeOption" data-time="30">30s</button>
+    <button class="timeOption" data-time="60">1m</button>
+  </div>
+
+  <div id="gameArea">
+    <div id="box"></div>
+		<div id="nextBox"></div>
+  </div>
+
+  <div id="modal">
+    <div id="modalContent">
+      <button id="closeModalBtn" class="close-modal-btn">&times;</button>
+      <h2>Game Over!</h2>
+      <p id="finalScore">Your final score is 0.</p>
+      <button id="restartBtn">Play Again</button>
+    </div>
+  </div>
+
+  <div id="leaderboard">
+    <h3>🏆 Leaderboard</h3>
+    <ul id="leaderboardList"></ul>
+    <button onclick="clearLeaderboard()">Clear Leaderboard</button>
+  </div>
+
+  <script>
+		const box = document.getElementById('box');
+		const nextBox = document.getElementById('nextBox');
+		const gameArea = document.getElementById('gameArea');
+		const scoreDisplay = document.getElementById('score');
+		const timerDisplay = document.getElementById('timer');
+		const startBtn = document.getElementById('startBtn');
+		const modal = document.getElementById('modal');
+		const finalScore = document.getElementById('finalScore');
+		const restartBtn = document.getElementById('restartBtn');
+		const setTimeBtn = document.getElementById('setTimeBtn');
+		const timePopup = document.getElementById('timePopup');
+		const initialInput = document.getElementById('initialInput');
+		const endGameBtn = document.getElementById('endGameBtn');
+
+		let score = 0;
+		let timeLeft;
+		let selectedTime = 30;
+		let gameInterval;
+		let moveInterval;
+		let moveSpeed = 1000;
+		let gameRunning = false;
+
+		let nextX = 0;
+		let nextY = 0;
+
+		// Save the name to localStorage
+		function savePlayerName() {
+			const name = document.getElementById('initialInput').value.trim();
+			if (name) {
+				localStorage.setItem('playerName', name);
+			}
+		}
+		// Load the player's name from localStorage
+		function loadPlayerName() {
+			const savedName = localStorage.getItem('playerName');
+			if (savedName) {
+				document.getElementById('initialInput').value = savedName;
+			}
+		}
+
+		// Call this when the page loads
+		document.addEventListener('DOMContentLoaded', loadPlayerName);
+
+
+		function generateNextPosition() {
+			const maxX = gameArea.clientWidth - box.clientWidth;
+			const maxY = gameArea.clientHeight - box.clientHeight;
+			nextX = Math.floor(Math.random() * maxX);
+			nextY = Math.floor(Math.random() * maxY);
+
+			// Move the nextBox
+			nextBox.style.left = nextX + 'px';
+			nextBox.style.top = nextY + 'px';
+
+			// Restart the animation by forcing reflow
+			nextBox.style.animation = 'none';
+			nextBox.offsetHeight; // Trigger reflow
+			nextBox.style.animation = 'nextposition 0.3s ease-in-out forwards';
+		}
+
+		function triggerCountdownAnimation() {
+			const gameArea = document.getElementById('gameArea');
+
+			// ✅ Request fullscreen as soon as countdown starts
+			if (document.documentElement.requestFullscreen) {
+				document.documentElement.requestFullscreen();
+			}
+
+			// ✅ Hide the modal immediately
+			modal.style.display = 'none';
+
+			// Show the countdown animation
+			gameArea.classList.add('countdown-active');
+
+			// Start the game after countdown
+			setTimeout(() => {
+				gameArea.classList.remove('countdown-active');
+				startGame(); // Now starts after countdown
+			}, 5000);
+		}
+
+
+
+
+		startBtn.addEventListener('click', triggerCountdownAnimation);
+		restartBtn.addEventListener('click', triggerCountdownAnimation);
+
+
+		function startGame() {
+			score = 0;
+			timeLeft = selectedTime;
+			moveSpeed = 1000;
+			gameRunning = true;
+			scoreDisplay.textContent = 'Score: 0';
+			timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+			box.style.display = 'block';
+			nextBox.style.display = 'block';
+			modal.style.display = 'none';
+			setTimeBtn.style.display = 'none';
+			startBtn.style.display = 'none';
+			initialInput.style.display = 'none';
+			endGameBtn.style.display = 'inline-block';
+			document.getElementById('leaderboard').style.display = 'none';
+
+			generateNextPosition(); // Initial next location
+			moveBoxToNext();        // Move box to first location
+			savePlayerName() 				// Save players name
+
+			clearInterval(moveInterval);
+			moveInterval = setInterval(moveBoxToNext, moveSpeed);
+
+			clearInterval(gameInterval);
+			gameInterval = setInterval(() => {
+				timeLeft--;
+				timerDisplay.textContent = `Time Left: ${timeLeft}s`;
+
+				if (timeLeft % 5 === 0 && moveSpeed > 300) {
+					moveSpeed -= 100;
+					clearInterval(moveInterval);
+					moveInterval = setInterval(moveBoxToNext, moveSpeed);
+				}
+
+				if (timeLeft <= 0) {
+					endGame();
+				}
+			}, 1000);
+
+			if (document.documentElement.requestFullscreen) {
+				document.documentElement.requestFullscreen();
+			}
+		}
+
+		function endGame() {
+			gameRunning = false;
+			clearInterval(gameInterval);
+			clearInterval(moveInterval);
+			box.style.display = 'none';
+			nextBox.style.display = 'none';
+			finalScore.textContent = `Your final score is ${score}.`;
+			timerDisplay.textContent = `Time Left: ${selectedTime}s`;
+			modal.style.display = 'flex';
+
+			endGameBtn.style.display = 'none';
+			setTimeBtn.style.display = 'inline-block';
+			startBtn.style.display = 'inline-block';
+			initialInput.style.display = 'inline-block';
+			document.getElementById('leaderboard').style.display = 'block';
+
+
+			const storedHigh = localStorage.getItem('highScore') || 0;
+			if (score > storedHigh) {
+				localStorage.setItem('highScore', score);
+			}
+
+			updateHighScoreUI();
+			updateLeaderboard(score);
+		}
+
+		function handleBoxClick() {
+			if (!gameRunning) return;
+			score++;
+			scoreDisplay.textContent = 'Score: ' + score;
+
+			moveBoxToNext();
+
+			clearInterval(moveInterval);
+			moveInterval = setInterval(moveBoxToNext, moveSpeed);
+		}
+
+		restartBtn.addEventListener('click', triggerCountdownAnimation);
+		box.addEventListener('click', handleBoxClick);
+
+		function updateHighScoreUI() {
+			const hs = localStorage.getItem('highScore') || 0;
+			let hsEl = document.getElementById('highScore');
+			if (!hsEl) {
+				hsEl = document.createElement('div');
+				hsEl.id = 'highScore';
+				// hsEl.style.marginTop = '10px';
+				// hsEl.style.color = 'var(--secondary-text-clr)';
+				scoreDisplay.insertAdjacentElement('afterend', hsEl);
+			}
+			hsEl.textContent = `High Score: ${hs}`;
+		}
+
+		function updateLeaderboard(score) {
+			const name = initialInput.value.trim().toUpperCase() || "???";
+
+			let leaderboard = JSON.parse(localStorage.getItem('leaderboard') || '[]');
+
+			// Ensure all entries are objects, even old ones
+			leaderboard = leaderboard.filter(entry => typeof entry === 'object' && entry.name && typeof entry.score === 'number');
+
+			leaderboard.push({ name, score });
+			leaderboard.sort((a, b) => b.score - a.score);
+			leaderboard = leaderboard.slice(0, 5);
+			localStorage.setItem('leaderboard', JSON.stringify(leaderboard));
+			renderLeaderboard(leaderboard);
+		}
+
+
+
+
+		function renderLeaderboard(leaderboard) {
+			const list = document.getElementById('leaderboardList');
+			list.innerHTML = '';
+			leaderboard.forEach((entry, index) => {
+				const li = document.createElement('li');
+				li.textContent = `${ordinal(index + 1)} - ${entry.name}: ${entry.score}`;
+				li.className = 'leaderboard-item';
+				list.appendChild(li);
+			});
+		}
+
+		function ordinal(n) {
+			const s = ["th", "st", "nd", "rd"], v = n % 100;
+			return n + (s[(v - 20) % 10] || s[v] || s[0]);
+		}
+
+		function clearLeaderboard() {
+			localStorage.removeItem('leaderboard');
+			localStorage.removeItem('highScore');
+			renderLeaderboard([]);
+			updateHighScoreUI();
+		}
+
+
+
+		setTimeBtn.addEventListener('click', (e) => {
+			timePopup.style.display = timePopup.style.display === 'none' ? 'block' : 'none';
+			const rect = setTimeBtn.getBoundingClientRect();
+			timePopup.style.left = rect.left + 'px';
+			timePopup.style.top = rect.bottom + 5 + 'px';
+		});
+
+		document.querySelectorAll('.timeOption').forEach(btn => {
+			btn.addEventListener('click', () => {
+				selectedTime = parseInt(btn.dataset.time);
+				timePopup.style.display = 'none';
+
+				// ✅ Update the time display immediately
+				setInterval (timerDisplay.textContent = `Time Left: ${selectedTime}s`, 10)
+				timerDisplay.textContent = `Time Left: ${selectedTime}s`;
+			});
+		});
+
+
+		document.addEventListener('click', (e) => {
+			if (!setTimeBtn.contains(e.target) && !timePopup.contains(e.target)) {
+				timePopup.style.display = 'none';
+			}
+		});
+
+		endGameBtn.addEventListener('click', () => {
+			if (gameRunning) endGame();
+		});
+
+		const closeModalBtn = document.getElementById('closeModalBtn');
+		closeModalBtn.addEventListener('click', () => {
+			modal.style.display = 'none';
+		});
+
+		// Ensure leaderboard is shown and populated on page load
+		document.addEventListener('DOMContentLoaded', () => {
+			const leaderboardEl = document.getElementById('leaderboard');
+			leaderboardEl.style.display = 'block';
+
+			const stored = JSON.parse(localStorage.getItem('leaderboard') || '[]');
+			renderLeaderboard(stored);
+			updateHighScoreUI();
+		});
+
+  </script>
+  
+
+	<div class="loader-overlay">
+		<div class="loaderS">
+			<svg class="svg-s"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3.24 5.65"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M.39,5.65,0,4.16l1.36-.35.17-.54-.75.08L.92.87,3.24,0l0,1.05-1.36.51-.11.92,1.15-.35L2.63,4,3,3.41,2.61,5.65Z"/></g></g></svg>
+
+			<svg class="loaderWord"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 39.05 10"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M1.74,8a.37.37,0,0,1-.24-.1l-1-1a.33.33,0,0,1-.1-.24V2.8H.15A.13.13,0,0,1,0,2.65V1.55A.13.13,0,0,1,.15,1.4H.4V.65A.13.13,0,0,1,.55.5h1.6A.13.13,0,0,1,2.3.65V1.4h.58A.13.13,0,0,1,3,1.55v1.1a.13.13,0,0,1-.15.15H2.3V6a.25.25,0,0,0,.07.19L3,6.78A.24.24,0,0,1,3,7v.89A.13.13,0,0,1,2.87,8ZM5.65,8a.37.37,0,0,1-.24-.1L4.21,6.7a.33.33,0,0,1-.1-.24V1.55a.13.13,0,0,1,.15-.15h1.6A.13.13,0,0,1,6,1.55V6.22a.25.25,0,0,0,.28.28h.82V1.55a.13.13,0,0,1,.15-.15h1.6A.13.13,0,0,1,9,1.55v6.3A.13.13,0,0,1,8.86,8Zm6.26,0a.37.37,0,0,1-.24-.1l-1.2-1.2a.37.37,0,0,1-.1-.24V2.94a.33.33,0,0,1,.1-.24l1.2-1.2a.33.33,0,0,1,.24-.1h.92a.3.3,0,0,1,.24.1l.3.3V.15A.13.13,0,0,1,13.52,0h1.6a.13.13,0,0,1,.15.15v7.7a.13.13,0,0,1-.15.15H13.88a.17.17,0,0,1-.12,0l-.09-.07-.3-.3-.3.3a.33.33,0,0,1-.24.1Zm.71-1.4H13a.37.37,0,0,0,.26-.08.38.38,0,0,0,.07-.27V2.8h-.75c-.14,0-.23,0-.27.07a.43.43,0,0,0-.08.28v3.1a.38.38,0,0,0,.08.27A.35.35,0,0,0,12.62,6.6ZM18.4,10a.13.13,0,0,1-.15-.15V8.91c0-.08,0-.12.09-.13l.88-.22.62-.33A.21.21,0,0,0,19.93,8v-1l-.56.52a.33.33,0,0,1-.24.1l-1,0a.37.37,0,0,1-.24-.1l-1.1-1.1a.37.37,0,0,1-.1-.24V1.55a.13.13,0,0,1,.15-.15h1.6a.13.13,0,0,1,.15.15V6.07a.38.38,0,0,0,.08.27.33.33,0,0,0,.26.08h.76V1.55a.13.13,0,0,1,.15-.15h1.6a.13.13,0,0,1,.15.15V8.76a.25.25,0,0,1-.1.24l-.8.51-1,.42-.14.05-.14,0Zm5.19-2a.21.21,0,0,1-.18-.1l-.75-1.27a.23.23,0,0,1,0-.21l2-4.78-.05.2V1.49l.06.11H22.87a.13.13,0,0,1-.15-.15V.15A.13.13,0,0,1,22.87,0h2.91A.2.2,0,0,1,26,.09l.86,1.21a.2.2,0,0,1,0,.21L24.78,6.33l0-.34v.57l-.1-.16h1.89a.13.13,0,0,1,.15.15v1.3a.13.13,0,0,1-.15.15Zm7,0-.13,0-.13,0L29.3,7.69l-1.23-.41c-.12,0-.18-.16-.18-.35v-4A.33.33,0,0,1,28,2.7l1.2-1.2a.33.33,0,0,1,.24-.1h1.92a.3.3,0,0,1,.24.1l1.2,1.2a.3.3,0,0,1,.11.24V5.4H29.67l0,.8.85.28L32,6.59a.13.13,0,0,1,.11.14V7.85A.13.13,0,0,1,32,8Zm-.24-3.54h.12A.57.57,0,0,0,31,4.24a.93.93,0,0,0,.18-.6V3.52a.93.93,0,0,0-.18-.6.54.54,0,0,0-.46-.22h-.12a.56.56,0,0,0-.47.22,1,1,0,0,0-.16.6v.12a1,1,0,0,0,.16.6A.6.6,0,0,0,30.38,4.46ZM34.3,8a.13.13,0,0,1-.15-.15V1.55a.13.13,0,0,1,.15-.15h3.21a.33.33,0,0,1,.24.1L39,2.7a.33.33,0,0,1,.1.24V7.85A.13.13,0,0,1,38.9,8H37.3a.13.13,0,0,1-.15-.15V3.18c0-.19-.1-.28-.29-.28h-.81V7.85A.13.13,0,0,1,35.9,8Z"/></g></g></svg>
+		</div>
+	</div>
+	<link rel="stylesheet" href="../css/loaderS.css">
+    <script>
+    window.addEventListener('load', () => {
+        // Wait 2 seconds for loader to finish loading animation
+        setTimeout(() => {
+        const overlay = document.querySelector('.loader-overlay');
+        const loader = document.querySelector('.loaderS');
+
+        // Start fading out
+        if (overlay) overlay.style.opacity = '0';
+        if (loader) loader.style.opacity = '0';
+
+        // After fade-out completes (0.5s), hide the elements
+        setTimeout(() => {
+            if (overlay) overlay.style.display = 'none';
+            if (loader) loader.style.display = 'none';
+        }, 500); // 0.5s for opacity transition
+        }, 2000); // Wait 2s before starting fade-out
+    });
+    </script>
+</body>
+</html>

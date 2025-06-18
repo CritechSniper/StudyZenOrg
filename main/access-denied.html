@@ -12,12 +12,27 @@
         <h1>Access Denied</h1>
         <input type="number" id="accessCode" placeholder="4-Digit Code" autocomplete="off" required>
         <button id="accessButton">Get Access</button>
-        <div class="acc-switch"><p>Don't have a code? <a href="mailto:waleed.gamer173@gmail.com">Get Code</a></p></div>
+        <div class="acc-switch"><p id="getCodeLink">Don't have a code? <a href="mailto:waleed.gamer173@gmail.com" id="LinkFailed">Get Code</a></p></div>
     </div>
     <div class="pic1"></div>
     <div class="pic2"></div>
     <script>
-        document.addEventListener("keydown", e => e.key === "Enter" && document.getElementById("accessButton").click());
+        document.addEventListener("keydown", e => {
+            if (e.key === "Enter") {
+                document.getElementById("accessButton").click();
+            }
+        });
+
+        const codePara = document.getElementById("getCodeLink");
+        const codeLink = document.getElementById("LinkFailed");
+
+        codePara.addEventListener("click", function () {
+            // Replace only once
+            if (!codePara.classList.contains("clicked")) {
+                codePara.classList.add("clicked");
+                codePara.innerHTML = "Nothing happened? Email to: waleed.gamer173@gmail.com";
+            }
+        });
     </script>
 </body>
 </html>

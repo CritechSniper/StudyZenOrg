@@ -113,3 +113,4 @@ Object.keys(cards).forEach(cardId => {
     popupContent.addEventListener('click', e => e.stopPropagation());
   }
 }
+document.addEventListener('DOMContentLoaded', initCardEvents);
