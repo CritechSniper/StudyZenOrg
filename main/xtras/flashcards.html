@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Flashcards</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    .input-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      width: 320px;
+      margin-bottom: 30px;
+    }
+    input {
+      padding: 10px;
+      font-size: 16px;
+      border: none;
+      background: #333;
+      color: white;
+      flex: 1 1 140px;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      background: #333;
+      color: white;
+      border: 1px solid #888;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s;
+      flex: 1 1 100px;
+    }
+    button:hover {
+      background-color: #555;
+    }
+
+    #flashcards-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 20px;
+      width: 100%;
+      max-width: 960px;
+    }
+
+    .card {
+      width: 300px;
+      height: 200px;
+      perspective: 1000px;
+      cursor: pointer;
+    }
+    .inner-card {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      text-align: center;
+      border-radius: 10px;
+      transition: transform 0.6s;
+      transform-style: preserve-3d;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.7);
+      background: #222;
+      border: 2px solid #555;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 24px;
+      color: white;
+      padding: 20px;
+      user-select: none;
+    }
+    .inner-card.flipped {
+      transform: rotateY(180deg);
+    }
+    .front, .back {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 10px;
+      box-sizing: border-box;
+    }
+    .front {
+      background: #222;
+      border: 2px solid #555;
+    }
+    .back {
+      background: #444;
+      border: 2px solid #888;
+      transform: rotateY(180deg);
+    }
+    #clearBtn {
+        position: fixed;
+        width: 200px;
+        bottom: 20px;
+        backdrop-filter: blur(10px);
+    }
+    #goBack {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background-color: #5e63ff;
+        border: none;
+        border-radius: 10px;
+        padding: 8px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    #goBack svg {
+        display: block;
+    }
+  </style>
+</head>
+<body>
+    <button id="goBack" onclick="location.href='../xtras.html'">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/>
+        </svg>
+    </button>
+  <h1>Create Flashcards</h1>
+  <div class="input-group">
+    <input id="frontText" type="text" placeholder="Front text (e.g., Question)" />
+    <input id="backText" type="text" placeholder="Back text (e.g., Answer)" />
+    <button onclick="createCard()">Add Card</button>
+  </div>
+
+    <div id="flashcards-container"></div>
+    <button id="clearBtn">
+    Clear All Flashcards
+    </button>
+
+
+<script>
+    const flashcardsKey = "myFlashcards";
+    let flashcards = [];
+
+    // Load saved flashcards from localStorage on page load
+    window.onload = () => {
+        const saved = localStorage.getItem(flashcardsKey);
+        if (saved) {
+        flashcards = JSON.parse(saved);
+        flashcards.forEach(card => addCardToDOM(card));
+        }
+    };
+
+    function createCard() {
+        const frontText = document.getElementById("frontText").value.trim();
+        const backText = document.getElementById("backText").value.trim();
+
+        if (!frontText || !backText) {
+        alert("Please enter both front and back text.");
+        return;
+        }
+
+        const cardData = { front: frontText, back: backText };
+        flashcards.push(cardData);
+
+        // Save updated flashcards to localStorage
+        localStorage.setItem(flashcardsKey, JSON.stringify(flashcards));
+
+        addCardToDOM(cardData);
+        clearInputs();
+    }
+
+    function clearInputs() {
+        document.getElementById("frontText").value = "";
+        document.getElementById("backText").value = "";
+        document.getElementById("frontText").focus();
+    }
+
+    function addCardToDOM(cardData) {
+        const container = document.getElementById("flashcards-container");
+
+        const card = document.createElement("div");
+        card.className = "card";
+
+        const innerCard = document.createElement("div");
+        innerCard.className = "inner-card";
+
+        const frontDiv = document.createElement("div");
+        frontDiv.className = "front";
+        frontDiv.textContent = cardData.front;
+
+        const backDiv = document.createElement("div");
+        backDiv.className = "back";
+        backDiv.textContent = cardData.back;
+
+        innerCard.appendChild(frontDiv);
+        innerCard.appendChild(backDiv);
+        card.appendChild(innerCard);
+
+        // Flip on click
+        card.addEventListener("click", () => {
+        innerCard.classList.toggle("flipped");
+        });
+
+        container.appendChild(card);
+    }
+    document.getElementById("clearBtn").addEventListener("click", () => {
+    if (confirm("Are you sure you want to clear all flashcards?")) {
+        // Clear localStorage
+        localStorage.removeItem("myFlashcards");
+
+        // Clear flashcards array
+        flashcards = [];
+
+        // Clear the container in the DOM
+        const container = document.getElementById("flashcards-container");
+        container.innerHTML = "";
+    }
+    });
+    </script>
+</body>
+</html>

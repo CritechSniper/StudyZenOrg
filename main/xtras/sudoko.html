@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Sudoku Fun!</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: Tahoma, sans-serif;
+      background-color: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+    }
+    h1 {
+      margin-bottom: 20px;
+    }
+    table {
+      border-collapse: collapse;
+    }
+    td {
+      border: 1px solid #555;
+      width: 40px;
+      height: 40px;
+      text-align: center;
+    }
+    input {
+      width: 100%;
+      height: 100%;
+      font-size: 18px;
+      text-align: center;
+      background-color: #222;
+      color: white;
+      border: none;
+    }
+    .bold-border {
+      border-width: 2px;
+    }
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #333;
+      color: white;
+      border: 1px solid #888;
+      cursor: pointer;
+    }
+    #goBack {
+        position: fixed;
+        top: 10px;
+        left: 10px;
+        background-color: #5e63ff;
+        border: none;
+        border-radius: 10px;
+        padding: 8px;
+        cursor: pointer;
+        z-index: 999;
+    }
+
+    #goBack svg {
+        display: block;
+    }
+  </style>
+</head>
+<body>
+    <button id="goBack" onclick="location.href='../xtras.html'">
+        <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3">
+        <path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/>
+        </svg>
+    </button>
+  <h1>Sudoku Fun!</h1>
+  <table id="sudoku-board"></table>
+  <button onclick="checkSolution()">Check Solution</button>
+  <p id="message"></p>
+
+  <script>
+    const puzzle = [
+      [5, 3, '', '', 7, '', '', '', ''],
+      [6, '', '', 1, 9, 5, '', '', ''],
+      ['', 9, 8, '', '', '', '', 6, ''],
+      [8, '', '', '', 6, '', '', '', 3],
+      [4, '', '', 8, '', 3, '', '', 1],
+      [7, '', '', '', 2, '', '', '', 6],
+      ['', 6, '', '', '', '', 2, 8, ''],
+      ['', '', '', 4, 1, 9, '', '', 5],
+      ['', '', '', '', 8, '', '', 7, 9]
+    ];
+
+    function createBoard() {
+      const board = document.getElementById("sudoku-board");
+      for (let i = 0; i < 9; i++) {
+        const row = document.createElement("tr");
+        for (let j = 0; j < 9; j++) {
+          const cell = document.createElement("td");
+          if (i % 3 === 0) cell.style.borderTop = "2px solid white";
+          if (j % 3 === 0) cell.style.borderLeft = "2px solid white";
+          if (i === 8) cell.style.borderBottom = "2px solid white";
+          if (j === 8) cell.style.borderRight = "2px solid white";
+
+          const input = document.createElement("input");
+          input.setAttribute("type", "text");
+          input.setAttribute("maxlength", "1");
+          if (puzzle[i][j] !== '') {
+            input.value = puzzle[i][j];
+            input.disabled = true;
+          }
+          cell.appendChild(input);
+          row.appendChild(cell);
+        }
+        board.appendChild(row);
+      }
+    }
+
+    function checkSolution() {
+      const inputs = document.querySelectorAll("input");
+      let index = 0;
+      const board = [];
+      for (let i = 0; i < 9; i++) {
+        board[i] = [];
+        for (let j = 0; j < 9; j++) {
+          let val = inputs[index++].value;
+          board[i][j] = val === '' ? 0 : parseInt(val);
+        }
+      }
+      for (let i = 0; i < 9; i++) {
+        let row = new Set(), col = new Set(), box = new Set();
+        for (let j = 0; j < 9; j++) {
+          if (row.has(board[i][j]) || col.has(board[j][i]) || 
+              box.has(board[3*Math.floor(i/3)+Math.floor(j/3)][3*(i%3)+j%3])) {
+            document.getElementById("message").textContent = "❌ Incorrect!";
+            return;
+          }
+          row.add(board[i][j]);
+          col.add(board[j][i]);
+          box.add(board[3*Math.floor(i/3)+Math.floor(j/3)][3*(i%3)+j%3]);
+        }
+      }
+      document.getElementById("message").textContent = "✅ Correct!";
+    }
+
+    createBoard();
+  </script>
+</body>
+</html>

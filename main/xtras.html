@@ -68,6 +68,9 @@
 		<div class="content2 box">
 			<button id="accuracyG" onclick="window.location.href='xtras/accuracygame.html'">Accuracy Game</button>
 			<button id="calculator" onclick="window.location.href='xtras/calculator.html'">Calculator</button>
+			<button id="flashcards" onclick="window.location.href='xtras/flashcards.html'">Flashcards</button>
+			<button id="sudoku" onclick="window.location.href='xtras/sudoko.html'">Sudoku</button>
+			<button id="typingtest" onclick="window.location.href='xtras/typingtest.html'">Typing Test</button>
 		</div>
 	</div>
 
@@ -82,24 +85,21 @@
 		</div>
 	</div>
 	<link rel="stylesheet" href="css/loaderS.css">
-<script>
-  window.addEventListener('load', () => {
-    // Wait 2 seconds for loader to finish loading animation
-    setTimeout(() => {
-      const overlay = document.querySelector('.loader-overlay');
-      const loader = document.querySelector('.loaderS');
+	<script>
+		window.onload = function() {
+			setTimeout(() => {
+			const overlay = document.querySelector('.loader-overlay');
+			const loader = document.querySelector('.loaderS');
 
-      // Start fading out
-      if (overlay) overlay.style.opacity = '0';
-      if (loader) loader.style.opacity = '0';
+			if (overlay) overlay.style.opacity = '0';
+			if (loader) loader.style.opacity = '0';
 
-      // After fade-out completes (0.5s), hide the elements
-      setTimeout(() => {
-        if (overlay) overlay.style.display = 'none';
-        if (loader) loader.style.display = 'none';
-      }, 500); // 0.5s for opacity transition
-    }, 1400); // Wait 2s before starting fade-out
-  });
-</script>
+			setTimeout(() => {
+				if (overlay) overlay.style.display = 'none';
+				if (loader) loader.style.display = 'none';
+			}, 500);
+			}, 1400);
+		};
+	</script>
 </body>
 </html>
