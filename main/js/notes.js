@@ -125,7 +125,7 @@ document.getElementById('savedDocs').addEventListener('change', function () {
     loadDocument(selectedTitle);
 
     // Change Save button to Update
-    saveBtn.textContent = "📝 Update Document";
+    saveBtn.textContent = "Update Document";
 
     // Replace click behavior to update
     saveBtn.onclick = function () {
