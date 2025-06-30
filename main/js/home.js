@@ -1,6 +1,4 @@
 window.addEventListener("load", function () {
-    console.log("%cHome script connected", "background-color: blue; color: white; border-radius: 5px;");
-
     // User from local storage
     const userData = JSON.parse(localStorage.getItem("user"));
 

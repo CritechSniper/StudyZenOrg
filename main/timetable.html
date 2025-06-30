@@ -9,7 +9,7 @@
 	<link rel="stylesheet" href="css/Scss.css">
 	<link rel="stylesheet" href="css/timetable.css">
 	<script src="js/access/checkaccess.js"></script>
- 	<script src="js/js.js"></script>
+ 	<script type="module" src="js/js.js"></script>
 	<script type="module" src="js/saverestoreData/saveTable.js"></script>
 	<script type="module" src="js/saverestoreData/restoreTable.js"></script>
 	<script src="js/toggles.js"></script>
@@ -172,7 +172,7 @@
 				</tr>
 			</table>
 		</div>
-		<button id="saveTable"><span>Save Timetable</span></button>
+		<button id="saveTable" onclick="saveClicked()">Save Timetable</button>
 
 	</div>
 	
@@ -200,6 +200,12 @@
 			}, 500);
 			}, 1400);
 		};
+		let tableL = document.getElementById("myTable").offsetWidth;
+		let saveBtn = document.getElementById("saveTable");
+		if (saveBtn) {
+			saveBtn.style.maxWidth = tableL + "px";
+			saveBtn.style.width = "100%";
+		}
 	</script>
 </body>
 </html>

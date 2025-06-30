@@ -34,7 +34,7 @@ body::before {
     opacity: 0.15;
     z-index: 0;
   }
-   
+/*
 *{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
@@ -98,8 +98,8 @@ label{
     height: 46px;
     width: 106px;
 
-    background-color: var(--btn-clr); /* Fallback for transparency */
-    -webkit-backdrop-filter: blur(10px); /* Safari support */
+    background-color: var(--btn-clr); 
+    -webkit-backdrop-filter: blur(10px);
     backdrop-filter: blur(10px);
 
     border-radius: 6px;
@@ -163,4 +163,242 @@ label{
     padding: 0px;
     margin: 0px;
     cursor: pointer;
+*/
+.stylers {
+  position: absolute;
+  top: 10px;
+  left: 60px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  border: 1px solid var(--line-clr);
+  border-radius: 10px;
+  background: var(--hover-clr);
+  padding: 7px;
+  z-index: 6;
+}
+
+.stylers button{
+  display: flex;
+  flex-direction: column;
+  left: 0px;
+  justify-content: center;
+  align-items: center;
+  width: 25px;
+  height: 25px;
+  font-size: 20px;
+  border-radius: 5px;
+  background: none;
+  padding: 2px;
+  border: 0px solid var(--accent-color);
+  color: var(--text-color);
+  transition: background-color 150ms ease, color 150ms ease;
+}
+b, i, u {
+  padding-bottom: 4px;
+}
+.stylers button.active{
+  background: var(--acent-clr);
+  color: var(--text-clr);
+}
+.stylers button:hover{
+  color: black;
+  cursor: pointer;
+}
+.notesMain{
+  position: relative;
+  padding: 15px;
+  background: var(--hover-color);
+  height: fit-content;
+  width: 90%;
+  left: 30px;
+  top: 25px;
+  margin: 5px;
+  border-radius: 5px;
+  overflow-y: auto;
+  transition: height 0.5s ease;
+}
+
+.notesMain::-webkit-scrollbar {
+  width: 5px;
+  border: 0px solid black;
+  border-radius: 5px;
+  padding: 3px;
+}
+
+#Docsmain {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--line-clr);
+  border-radius: 10px;
+  background: var(--hover-clr);
+  margin: 0 auto;           
+  translate: none !important;
+  top: 0 !important;        
+  box-sizing: border-box;
+}
+
+#createArea{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: fit-content;
+  height: fit-content;
+  background: var(--third-background);
+  padding: 7px;
+}
+#docsContainer{
+  display: flex;
+  flex-direction: column;
+  row-gap: 5px;
+  height: 130px;
+  position: absolute;
+  right: 5px;
+  top: 50px;
+  width: 15%;
+  overflow-y: auto;
+}
+#docsContainer::-webkit-scrollbar{
+  width: 0px;
+}
+.Document{
+  background: var(--accent-color);
+  padding: 15px;
+  width: 100%;
+  border-radius: 5px;
+  border-bottom: 1px solid black;
+  display: flex;
+  flex-direction: row;
+  column-gap: 15px;
+  align-items: center;
+  justify-content:space-between;
+}
+.Document button{
+  color: var(--text-color);
+  background-color: red;
+  border: 0px solid black;
+  padding: 7px;
+  font-size: 15px;
+  border-radius: 5px;
+}
+
+
+
+
+
+.container {
+	position: relative;
+  width: 80%;
+  margin-right: 7px;
+  background: var(--base-clr);
+  padding: 20px;
+  color: black;
+  border-radius: 10px;
+}
+input, select, button {
+  padding: 10px;
+  margin: 10px 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+input:focus-visible{
+  outline: 2px solid var(--accent-color)
+}
+#editor {
+  min-height: 300px;
+	max-height: 100%;
+  border: 1px solid #ccc;
+  padding: 15px;
+  border-radius: 6px;
+  background-color: #fafafa;
+  margin-bottom: 15px;
+  overflow-y: auto;
+}
+#editor:focus {
+  outline: none;
+}
+button {
+  background-color: var(--btn-clr);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+  height: fit-content;
+}
+button:hover {
+  background-color: var(--btn-hover-clr);
+  scale: 0.99;
+}
+button:active {
+  scale: 0.95;
+}
+#savedDocs{
+  height: fit-content;
+  border-radius: 5px;
+}
+#savedDocs option:hover{
+  background-color: var(--accent-color);
+}
+#external{
+  background-color: var(--base-clr);
+  border-radius: 10px;
+  margin-left: 5px;
+  padding: 20px;
+	padding-top: 7px;
+}
+.btn-danger {
+  background-color: #dc3545;
+}
+.btn-danger:hover {
+  scale: 0.99;
+  background-color: #c82333;
+}
+.btn-danger:active {
+  scale: 0.95;
+}
+label {
+  color: var(--text-clr);
+  font-weight: bold;
+}
+.button-group {
+  display: flex;
+  gap: 10px;
+  height: fit-content;
+}
+#docTitle {
+  border-radius: 6px;
+  outline: none;
+  border: none;
+  z-index: 10;
+}
+#editorWrapper {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 20px 20px;
+  box-sizing: border-box;
+  margin: 0
+}
+
+#Docsmain {
+  position: relative;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: row;
+  border: 1px solid var(--line-clr);
+  border-radius: 10px;
+  background: var(--hover-clr);
+  top: 25px;
+  translate: none;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+body, button, input, select, textarea, label {
+  font-family: system-ui, sans-serif;
 }

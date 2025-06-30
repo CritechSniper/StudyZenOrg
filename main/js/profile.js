@@ -1,6 +1,4 @@
 window.addEventListener("load", function () {
-  console.log("%cProfile script connected", "background-color: blue; color: white; border-radius: 5px;");
-
   const userData = JSON.parse(localStorage.getItem("user"));
 
   if (userData && typeof userData === "object") {
@@ -25,3 +23,8 @@ window.addEventListener("load", function () {
   }
 });
 document.addEventListener('contextmenu', e => e.preventDefault());const bgVideo = document.querySelector('.bg-video');
+function signout() {
+  console.log("Signing out...");
+  localStorage.removeItem("user");
+  window.location.href = 'profile.html';
+}
