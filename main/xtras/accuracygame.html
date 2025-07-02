@@ -289,7 +289,7 @@
     <button onclick="clearLeaderboard()">Clear Leaderboard</button>
   </div>
 
-  <script>
+ 	<script>
 		const box = document.getElementById('box');
 		const nextBox = document.getElementById('nextBox');
 		const gameArea = document.getElementById('gameArea');
@@ -315,14 +315,12 @@
 		let nextX = 0;
 		let nextY = 0;
 
-		// Save the name to localStorage
 		function savePlayerName() {
 			const name = document.getElementById('initialInput').value.trim();
 			if (name) {
 				localStorage.setItem('playerName', name);
 			}
 		}
-		// Load the player's name from localStorage
 		function loadPlayerName() {
 			const savedName = localStorage.getItem('playerName');
 			if (savedName) {
@@ -330,7 +328,6 @@
 			}
 		}
 
-		// Call this when the page loads
 		document.addEventListener('DOMContentLoaded', loadPlayerName);
 
 
@@ -340,37 +337,36 @@
 			nextX = Math.floor(Math.random() * maxX);
 			nextY = Math.floor(Math.random() * maxY);
 
-			// Move the nextBox
 			nextBox.style.left = nextX + 'px';
 			nextBox.style.top = nextY + 'px';
 
-			// Restart the animation by forcing reflow
 			nextBox.style.animation = 'none';
-			nextBox.offsetHeight; // Trigger reflow
+			nextBox.offsetHeight;
 			nextBox.style.animation = 'nextposition 0.3s ease-in-out forwards';
+		}
+
+		function moveBoxToNext() {
+			box.style.left = nextX + 'px';
+			box.style.top = nextY + 'px';
+			generateNextPosition();
 		}
 
 		function triggerCountdownAnimation() {
 			const gameArea = document.getElementById('gameArea');
 
-			// ✅ Request fullscreen as soon as countdown starts
 			if (document.documentElement.requestFullscreen) {
 				document.documentElement.requestFullscreen();
 			}
 
-			// ✅ Hide the modal immediately
 			modal.style.display = 'none';
 
-			// Show the countdown animation
 			gameArea.classList.add('countdown-active');
 
-			// Start the game after countdown
 			setTimeout(() => {
 				gameArea.classList.remove('countdown-active');
-				startGame(); // Now starts after countdown
+				startGame();
 			}, 5000);
 		}
-
 
 
 
@@ -394,10 +390,9 @@
 			endGameBtn.style.display = 'inline-block';
 			document.getElementById('leaderboard').style.display = 'none';
 
-			generateNextPosition(); // Initial next location
-			moveBoxToNext();        // Move box to first location
-			savePlayerName() 				// Save players name
-
+			generateNextPosition();
+			moveBoxToNext();
+			savePlayerName()
 			clearInterval(moveInterval);
 			moveInterval = setInterval(moveBoxToNext, moveSpeed);
 
@@ -468,8 +463,6 @@
 			if (!hsEl) {
 				hsEl = document.createElement('div');
 				hsEl.id = 'highScore';
-				// hsEl.style.marginTop = '10px';
-				// hsEl.style.color = 'var(--secondary-text-clr)';
 				scoreDisplay.insertAdjacentElement('afterend', hsEl);
 			}
 			hsEl.textContent = `High Score: ${hs}`;
@@ -480,7 +473,6 @@
 
 			let leaderboard = JSON.parse(localStorage.getItem('leaderboard') || '[]');
 
-			// Ensure all entries are objects, even old ones
 			leaderboard = leaderboard.filter(entry => typeof entry === 'object' && entry.name && typeof entry.score === 'number');
 
 			leaderboard.push({ name, score });
@@ -530,7 +522,6 @@
 				selectedTime = parseInt(btn.dataset.time);
 				timePopup.style.display = 'none';
 
-				// ✅ Update the time display immediately
 				setInterval (timerDisplay.textContent = `Time Left: ${selectedTime}s`, 10)
 				timerDisplay.textContent = `Time Left: ${selectedTime}s`;
 			});
@@ -552,7 +543,6 @@
 			modal.style.display = 'none';
 		});
 
-		// Ensure leaderboard is shown and populated on page load
 		document.addEventListener('DOMContentLoaded', () => {
 			const leaderboardEl = document.getElementById('leaderboard');
 			leaderboardEl.style.display = 'block';
@@ -561,8 +551,7 @@
 			renderLeaderboard(stored);
 			updateHighScoreUI();
 		});
-
-  </script>
+  	</script>
   
 
 	<div class="loader-overlay">
