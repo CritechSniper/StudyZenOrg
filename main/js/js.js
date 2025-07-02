@@ -51,7 +51,7 @@ onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("🔥 Logged in user info:", user);
   } else {
-    console.warn("❌ No user is currently logged in.");
+    console.log("❌ No user is currently logged in.");
   }
 });
 

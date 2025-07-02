@@ -6,7 +6,23 @@
     <link rel="stylesheet" href="home.css">
     <script src="home.js" defer></script>
     <title>StudyZen</title>
-    <link rel="shortcut icon" href="Main Icons/S.svg" type="image/x-icon">
+    <!-- Corrected favicon path based on your screenshot -->
+    <link rel="shortcut icon" href="main/Main Icons/S.svg" type="image/x-icon"> 
+
+    <!-- PWA Meta Tags (Updated for deprecation warning) -->
+    <meta name="theme-color" content="#5e63ff"> 
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="StudyZen">
+    <!-- NEW: Recommended for Android PWA install -->
+    <meta name="mobile-web-app-capable" content="yes"> 
+
+    <!-- Link to your Web App Manifest -->
+    <link rel="manifest" href="/manifest.json">
+
+    <!-- Apple Touch Icon -->
+    <link rel="apple-touch-icon" href="/icon-192x192.png"> 
+
 </head>
 <body>
   <div class="startBox">
@@ -63,5 +79,20 @@
     <button onclick="window.location.href='main/login.html'">Create Your Account</button>
   </section>
 </div>
+
+<!-- Register the Service Worker -->
+<script>
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', () => {
+            navigator.serviceWorker.register('/service-worker.js') 
+                .then(registration => {
+                    console.log('Service Worker registered with scope:', registration.scope);
+                })
+                .catch(error => {
+                    console.error('Service Worker registration failed:', error);
+                });
+        });
+    }
+</script>
 </body>
 </html>
