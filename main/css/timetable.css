@@ -56,6 +56,9 @@ textarea, select{
     resize: none;
     overflow: none;
 }
+.table {
+    overflow-x: none;
+}
 .table input {
     border-radius: 4px;
     max-height: 35px;
@@ -98,28 +101,63 @@ th, td {
     display: flex;
     background-color: var(--btn-clr);
     color: var(--text-clr);
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;   
     font-weight: 500;
     box-shadow: none;
     border: none;
 
     flex-direction: column;
-    width: calc(100vw - 80px);
     position: absolute;
-    margin-top: 10px;
-    padding: 20px;
+    padding: 20px 50px;
     border-radius: 5px;
     cursor: pointer;
-    transition: width 0.3s ease-in-out;
-}
-#saveTable.close {
-    width: calc(100vw - 220px);
 }
 #saveTable:hover {
     background-color: var(--btn-hover-clr);
 }
-#saveTable span{
-    justify-content: center;
-    align-items: center;
-    /* position: fixed; */
+#saveTable.disabled {
+    color: gray;
+    background-color: var(--line-clr);
+    cursor: not-allowed;
+}
+.save-button-wrapper {
+    position: relative;
+    display: inline-block;
+}
+
+#saveTable.disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.save-button-tip {
+    background-color: black;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    position: absolute;
+    z-index: 1000;
+    opacity: 0;
+    pointer-events: none;
+    bottom: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    white-space: nowrap;
+    font-size: 0.8em;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.save-button-tip::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-width: 5px;
+    border-style: solid;
+    border-color: black transparent transparent transparent;
+}
+
+.save-button-wrapper:hover #saveTable.disabled + .save-button-tip {
+    opacity: 1;
 }

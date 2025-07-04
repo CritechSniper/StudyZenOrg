@@ -67,112 +67,115 @@
 	</nav>
 
 	<div class="content">
-		<div class="table">
-			<table id="myTable">
-				<tr>
-					<th>Time</th>
-					<th><input type="time" id="time1"></th>
-					<th><input type="time" id="time2"></th>
-					<th>Break Time</th>
-					<th><input type="time" id="time3"></th>
-					<th><input type="time" id="time4"></th>
-					<th>Break Time</th>
-					<th><input type="time" id="time5"></th>
-					<th><input type="time" id="time6"></th>
-					<th>Break Time</th>
-					<th><input type="time" id="time7"></th>
-					<th><input type="time" id="time8"></th>
-					<th>Break Time</th>
-					<th><input type="time" id="time9"></th>
-				</tr>
-				<!-- 1st row - Monday -->
-				<tr>
-					<th>Monday</th>
-					<td><textarea id="Mon1"></textarea></td>
-					<td><textarea id="Mon2"></textarea></td>
-					<td class="break" id="top1"></td>
-					<td><textarea id="Mon3"></textarea></td>
-					<td><textarea id="Mon4"></textarea></td>
-					<td class="break" id="top2"></td>
-					<td><textarea id="Mon5"></textarea></td>
-					<td><textarea id="Mon6"></textarea></td>
-					<td class="break" id="top3"></td>
-					<td><textarea id="Mon7"></textarea></td>
-					<td><textarea id="Mon8"></textarea></td>
-					<td class="break" id="top4"></td>
-					<td><textarea id="Mon9"></textarea></td>
-				</tr>
-				<!-- 2nd row - Tuesday -->
-				<tr>
-					<th>Tuesday</th>
-					<td><textarea id="Tues1"></textarea></td>
-					<td><textarea id="Tues2"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Tues3"></textarea></td>
-					<td><textarea id="Tues4"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Tues5"></textarea></td>
-					<td><textarea id="Tues6"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Tues7"></textarea></td>
-					<td><textarea id="Tues8"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Tues9"></textarea></td>
-				</tr>
-				<!-- 3rd row - Wednesday -->
-				<tr>
-					<th>Wednesday</th>
-					<td><textarea id="Wed1"></textarea></td>
-					<td><textarea id="Wed2"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Wed3"></textarea></td>
-					<td><textarea id="Wed4"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Wed5"></textarea></td>
-					<td><textarea id="Wed6"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Wed7"></textarea></td>
-					<td><textarea id="Wed8"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Wed9"></textarea></td>
-				</tr>
-				<!-- 4th row - Thursday -->
-				<tr>
-					<th>Thursday</th>
-					<td><textarea id="Thurs1"></textarea></td>
-					<td><textarea id="Thurs2"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Thurs3"></textarea></td>
-					<td><textarea id="Thurs4"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Thurs5"></textarea></td>
-					<td><textarea id="Thurs6"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Thurs7"></textarea></td>
-					<td><textarea id="Thurs8"></textarea></td>
-					<td class="break"></td>
-					<td><textarea id="Thurs9"></textarea></td>
-				</tr>
-				<!-- 5th row - Friday -->
-				<tr>
-					<th>Friday</th>
-					<td><textarea id="Fri1"></textarea></td>
-					<td><textarea id="Fri2"></textarea></td>
-					<td class="break" id="bottom1"></td>
-					<td><textarea id="Fri3"></textarea></td>
-					<td><textarea id="Fri4"></textarea></td>
-					<td class="break" id="bottom2"></td>
-					<td><textarea id="Fri5"></textarea></td>
-					<td><textarea id="Fri6"></textarea></td>
-					<td class="break" id="bottom3"></td>
-					<td><textarea id="Fri7"></textarea></td>
-					<td><textarea id="Fri8"></textarea></td>
-					<td class="break" id="bottom4"></td>
-					<td><textarea id="Fri9"></textarea></td>
-				</tr>
-			</table>
-		</div>
-		<button id="saveTable" onclick="saveClicked()">Save Timetable</button>
+		<table id="myTable">
+			<tr>
+				<th>Time</th>
+				<th><input type="time" id="time1"></th>
+				<th><input type="time" id="time2"></th>
+				<th>Break Time</th>
+				<th><input type="time" id="time3"></th>
+				<th><input type="time" id="time4"></th>
+				<th>Break Time</th>
+				<th><input type="time" id="time5"></th>
+				<th><input type="time" id="time6"></th>
+				<th>Break Time</th>
+				<th><input type="time" id="time7"></th>
+				<th><input type="time" id="time8"></th>
+				<th>Break Time</th>
+				<th><input type="time" id="time9"></th>
+			</tr>
+			<!-- 1st row - Monday -->
+			<tr>
+				<th>Monday</th>
+				<td><textarea id="Mon1"></textarea></td>
+				<td><textarea id="Mon2"></textarea></td>
+				<td class="break" id="top1"></td>
+				<td><textarea id="Mon3"></textarea></td>
+				<td><textarea id="Mon4"></textarea></td>
+				<td class="break" id="top2"></td>
+				<td><textarea id="Mon5"></textarea></td>
+				<td><textarea id="Mon6"></textarea></td>
+				<td class="break" id="top3"></td>
+				<td><textarea id="Mon7"></textarea></td>
+				<td><textarea id="Mon8"></textarea></td>
+				<td class="break" id="top4"></td>
+				<td><textarea id="Mon9"></textarea></td>
+			</tr>
+			<!-- 2nd row - Tuesday -->
+			<tr>
+				<th>Tuesday</th>
+				<td><textarea id="Tues1"></textarea></td>
+				<td><textarea id="Tues2"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Tues3"></textarea></td>
+				<td><textarea id="Tues4"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Tues5"></textarea></td>
+				<td><textarea id="Tues6"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Tues7"></textarea></td>
+				<td><textarea id="Tues8"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Tues9"></textarea></td>
+			</tr>
+			<!-- 3rd row - Wednesday -->
+			<tr>
+				<th>Wednesday</th>
+				<td><textarea id="Wed1"></textarea></td>
+				<td><textarea id="Wed2"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Wed3"></textarea></td>
+				<td><textarea id="Wed4"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Wed5"></textarea></td>
+				<td><textarea id="Wed6"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Wed7"></textarea></td>
+				<td><textarea id="Wed8"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Wed9"></textarea></td>
+			</tr>
+			<!-- 4th row - Thursday -->
+			<tr>
+				<th>Thursday</th>
+				<td><textarea id="Thurs1"></textarea></td>
+				<td><textarea id="Thurs2"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Thurs3"></textarea></td>
+				<td><textarea id="Thurs4"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Thurs5"></textarea></td>
+				<td><textarea id="Thurs6"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Thurs7"></textarea></td>
+				<td><textarea id="Thurs8"></textarea></td>
+				<td class="break"></td>
+				<td><textarea id="Thurs9"></textarea></td>
+			</tr>
+			<!-- 5th row - Friday -->
+			<tr>
+				<th>Friday</th>
+				<td><textarea id="Fri1"></textarea></td>
+				<td><textarea id="Fri2"></textarea></td>
+				<td class="break" id="bottom1"></td>
+				<td><textarea id="Fri3"></textarea></td>
+				<td><textarea id="Fri4"></textarea></td>
+				<td class="break" id="bottom2"></td>
+				<td><textarea id="Fri5"></textarea></td>
+				<td><textarea id="Fri6"></textarea></td>
+				<td class="break" id="bottom3"></td>
+				<td><textarea id="Fri7"></textarea></td>
+				<td><textarea id="Fri8"></textarea></td>
+				<td class="break" id="bottom4"></td>
+				<td><textarea id="Fri9"></textarea></td>
+			</tr>
+		</table>
+		<span class="save-button-wrapper">
+			<button id="saveTable" onclick="saveClicked()">Save Timetable</button>
+			<div class="save-button-tip">
+				This button is disabled due to your account type.
+			</div>
+		</span>
 
 	</div>
 	
@@ -200,12 +203,20 @@
 			}, 500);
 			}, 1400);
 		};
-		let tableL = document.getElementById("myTable").offsetWidth;
-		let saveBtn = document.getElementById("saveTable");
+		document.addEventListener("DOMContentLoaded", function () {
+		const localUser = JSON.parse(localStorage.getItem("user"));
+		const saveBtn = document.getElementById("saveTable");
+
 		if (saveBtn) {
-			saveBtn.style.maxWidth = tableL + "px";
-			saveBtn.style.width = "100%";
-		}
+			if (localUser && localUser.type === "class") {
+				saveBtn.classList.add("disabled");
+				saveBtn.disabled = true;
+			} else {
+				saveBtn.classList.remove("disabled");
+				saveBtn.disabled = false;
+			}
+    	}
+		});
 	</script>
 </body>
 </html>

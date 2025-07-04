@@ -1,5 +1,3 @@
-const localUser = JSON.parse(localStorage.getItem("user"));
-
 function toggleSidebar() {
   const sidebar = document.getElementById("sidebar");
   const toggleButton = document.getElementById("toggle-btn");
@@ -17,14 +15,6 @@ document.addEventListener("DOMContentLoaded", function () {
     toggleButton.onclick = toggleSidebar;
   } else {
     console.error("Toggle button not found in the DOM.");
-  }
-
-  if (localUser && localUser.type === "class") {
-		
-    const saveBtn = document.getElementById("saveTable");
-    if (saveBtn) saveBtn.classList.remove("disabled");
-
-    // const element = document.getElementById("yourElementId"); element.classList.add("disabled");
   }
 });
 
