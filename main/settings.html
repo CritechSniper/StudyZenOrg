@@ -6,13 +6,12 @@
 	<link rel="shortcut icon" href="Main Icons/S.svg" type="image/x-icon">
 </head>
 <body>
+    <script src="https://cdn.tailwindcss.com"></script>
 	<link rel="stylesheet" href="css/Scss.css">
-	<link rel="stylesheet" href="css/Profile.css">
+    <link rel="stylesheet" href="css/settings.css">
 	<script src="js/access/checkaccess.js"></script>
-    <script src="js/Loader.js" defer></script>
-    <script type="module" src="js/profile.js" defer></script>
-    <script src="js/authCheck.js" defer></script>
-    <script type="module" src="js/js.js" defer></script>
+ 	<script type="module" src="js/js.js"></script>
+	<script src="js/Loader.js"></script>
 	<nav id="sidebar" class="close">
 		<ul>
 			<li>
@@ -21,7 +20,7 @@
 					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/></svg>
 				</button>
 			</li>
-			<li class="active">
+			<li>
                 <a href="profile.html">
                     <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M480-480q-83 0-141.5-58.5T280-680q0-83 58.5-141.5T480-880q83 0 141.5 58.5T680-680q0 83-58.5 141.5T480-480Zm0 80q83 0 156 31.5t127 85.5q54 54 85.5 127T880-80H80q0-83 31.5-156t85.5-127q54-54 127-85.5T480-400Z"/></svg>
                     <span>Profile</span>
@@ -63,7 +62,7 @@
 					<span>Feedback</span>
 				</a>
 			</li>
-			<li>
+			<li class="active">
 				<a href="settings.html">
 					<svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="m370-80-16-128q-13-5-24.5-12T307-235l-119 50L78-375l103-78q-1-7-1-13.5v-27q0-6.5 1-13.5L78-585l110-190 119 50q11-8 23-15t24-12l16-128h220l16 128q13 5 24.5 12t22.5 15l119-50 110 190-103 78q1 7 1 13.5v27q0 6.5-2 13.5l103 78-110 190-118-50q-11 8-23 15t-24 12L590-80H370Zm70-80h79l14-106q31-8 57.5-23.5T639-327l99 41 39-68-86-65q5-14 7-29.5t2-31.5q0-16-2-31.5t-7-29.5l86-65-39-68-99 42q-22-23-48.5-38.5T533-694l-13-106h-79l-14 106q-31 8-57.5 23.5T321-633l-99-41-39 68 86 64q-5 15-7 30t-2 32q0 16 2 31t7 30l-86 65 39 68 99-42q22 23 48.5 38.5T427-266l13 106Zm42-180q58 0 99-41t41-99q0-58-41-99t-99-41q-59 0-99.5 41T342-480q0 58 40.5 99t99.5 41Zm-2-140Z"/></svg>
 					<span>Settings</span>
@@ -72,39 +71,35 @@
 		</ul>
 	</nav>
     <div class="content">
-        <div class="pBox">
-            <h1>Profile</h1>
-			<div id="profileInfo">
-				<!-- Class account info -->
-				<div id="classInfo" style="display: none;">
-					<p><strong>Class Name:</strong> <span id="className">Loading...</span></p>
-					<button id="signout" onclick="signout()">Sign Out</button>
-				</div>
-			
-				<!-- Regular account info -->
-				<div id="userInfo">
-					<p><strong>First Name:</strong> <span id="firstName">Loading...</span></p>
-					<p><strong>Last Name:</strong> <span id="lastName">Loading...</span></p>
-					<p><strong>Email:</strong> <span id="email">Loading...</span></p>
-					<p><strong>Username:</strong> <span id="username">Loading...</span></p>
-					<button id="signout" onclick="signout()">Sign Out</button>
-				</div>
-			</div>
-			
-			<div id="noUser" style="display: none;">
-				<p>No user is currently signed in.</p>
-				<p>Please log in or sign up to access your profile.</p>
-				<div id="noUserbtns">
-					<button id="signin" onclick="window.location.href='login.html'">Log In</button>
-					<button id="signup" onclick="window.location.href='register.html'">Sign Up</button>
-				</div>
-			</div>
-			
-        </div>
-    </div>
-	
+        <h1>Settings</h1>
+        <div class="content2">
 
-	<div class="loader-overlay">
+            <div class="settings-container">
+                <div class="settings-section">
+                    <h2>General Settings</h2>
+                    <div class="settings-section-box">
+                        <label for="theme-select">Theme:</label>
+                        <select id="theme-select">
+                            <option value="light">Light</option>
+                            <option value="dark">Dark</option>
+                            <option value="system">System Default</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h2>Account Settings</h2>
+                    <div class="settings-section-box">
+                        <button id="change-password-btn">Change Password</button>
+                        <button id="delete-account-btn" onclick="signout()">Delete/Sign Out Account</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+		*Change Password is still on work
+    </div>
+    <div class="loader-overlay">
 		<div class="loaderS">
 			<svg class="svg-s"xmlns="http://www.w3.org/2000/svg" viewBox="0 0 3.24 5.65"><defs><style>.cls-1{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><path class="cls-1" d="M.39,5.65,0,4.16l1.36-.35.17-.54-.75.08L.92.87,3.24,0l0,1.05-1.36.51-.11.92,1.15-.35L2.63,4,3,3.41,2.61,5.65Z"/></g></g></svg>
 
@@ -112,7 +107,7 @@
 		</div>
 	</div>
 	<link rel="stylesheet" href="css/loaderS.css">
-	<script>
+	<!-- <script>
 		window.onload = function() {
 			setTimeout(() => {
 			const overlay = document.querySelector('.loader-overlay');
@@ -127,7 +122,33 @@
 			}, 500);
 			}, 1400);
 		};
-	</script>
+		document.addEventListener("DOMContentLoaded", function () {
+		const localUser = JSON.parse(localStorage.getItem("user"));
+		const changePassBtn = document.getElementById("change-password-btn");
+		const deleteAccBtn = document.getElementById("delete-account-btn");
+
+		if (localUser && localUser.type === "class") {
+			if (changePassBtn) {
+			changePassBtn.classList.add("disabled");
+			changePassBtn.disabled = true;
+			}
+			if (deleteAccBtn) {
+			deleteAccBtn.classList.add("disabled");
+			deleteAccBtn.disabled = true;
+			}
+		} else {
+			if (changePassBtn) {
+			changePassBtn.classList.remove("disabled");
+			changePassBtn.disabled = false;
+			}
+			if (deleteAccBtn) {
+			deleteAccBtn.classList.remove("disabled");
+			deleteAccBtn.disabled = false;
+			}
+		}
+		});
+	</script> -->
+	<script type="module" src="js/settings.js"></script>
 	<link rel="stylesheet" href="css/Ltheme.css">
 </body>
 </html>

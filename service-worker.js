@@ -1,4 +1,4 @@
-const CACHE_NAME = 'studyzen-cache-v1';
+const CACHE_NAME = 'studyzen-cache-v2';
 
 const urlsToCache = [
     '/',
@@ -25,6 +25,7 @@ const urlsToCache = [
     '/main/timetable.html', 
     '/main/todo.html', 
     '/main/xtras.html', 
+    '/main/settings.html',
 
     '/main/css/extras.css', 
     '/main/css/feedback.css', 
@@ -36,6 +37,7 @@ const urlsToCache = [
     '/main/css/Scss.css', 
     '/main/css/timetable.css',
     '/main/css/todo.css', 
+    '/main/css/settings.css',
 
     '/main/icons/OL.svg',
     '/main/icons/UL.svg',
@@ -57,6 +59,7 @@ const urlsToCache = [
     '/main/js/profile.js',
     '/main/js/todo.js',
     '/main/js/toggles.js',
+    '/main/js/settings.js',
 
     '/main/Main Icons/SVG/Asset 1.svg', 
     '/main/Main Icons/SVG/Asset 2.svg', 
@@ -71,6 +74,9 @@ const urlsToCache = [
     '/main/Main Icons/Table.svg', 
     '/main/Main Icons/To-do.svg', 
     '/main/Main Icons/Xtras.svg', 
+
+    '/main/Settings Icons/Settings.svg',
+    '/main/Settings Icons/Theme.svg',
 
     '/main/xtras/accuracygame.html',
     '/main/xtras/calculator.html',

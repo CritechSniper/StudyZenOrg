@@ -67,8 +67,8 @@ body::after {
 }
 .greetings {
   margin-top: 20px;
-    height: fit-content;
-    width: fit-content;
+  height: fit-content;
+  width: fit-content;
 }
 .greetings path {
   fill: transparent;
@@ -196,6 +196,7 @@ body::after {
   .card-content p {
     font-size: 0.95rem;
     opacity: 0.8;
+    color: var(--secondary-text-clr);
   }
 
   @media (min-width: 856px) {

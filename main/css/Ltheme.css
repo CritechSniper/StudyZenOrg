@@ -1,0 +1,51 @@
+body.light-theme {
+    --base-clr: #f0f2f5 !important;
+    --line-clr: #ccc !important;
+    --hover-clr: #ffffff !important;
+    --text-clr: #333 !important;
+    --acent-clr:#656aff !important;
+    --secondary-text-clr: #d3d3d3 !important;
+    --btn-hover-clr: #474dff !important;
+    --btn-clr: #656aff !important;
+}
+body.light-theme svg:not(.svg-s, .loaderWord) path {
+    stroke: black;
+    color: black;
+}
+body.light-theme .card-img-container img{
+    filter: invert(90%);
+}
+body.light-theme .greetings path {
+  animation: textAnimation2 2s ease-in-out forwards;
+}
+@keyframes textAnimation2 {
+  0% {
+    stroke-dashoffset: 40;
+    height: 100px;
+    width: 420px;
+  }
+  60% {
+    fill: transparent;
+    height: 100px;
+    width: 420px;
+  }
+  100% {
+    fill: black;
+    stroke-dashoffset: 0;
+    height: 100px;
+    width: 420px;
+
+  }
+}
+body.light-theme .add-btn {
+    background-color: var(--btn-clr);
+}
+body.light-theme #Docsmain {
+    background-color: var(--acent-clr);
+}
+body.light-theme #saveTable {
+    color: var(--base-clr);
+}
+body.light-theme .content2 p {
+    color: var(--text-clr);
+}

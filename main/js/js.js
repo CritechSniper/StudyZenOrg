@@ -1,28 +1,13 @@
-function toggleSidebar() {
-  const sidebar = document.getElementById("sidebar");
-  const toggleButton = document.getElementById("toggle-btn");
-  if (!sidebar || !toggleButton) {
-    console.error("Sidebar or toggle button not found!");
-    return;
-  }
-  sidebar.classList.toggle("close");
-  toggleButton.classList.toggle("rotate");
-}
-
-document.addEventListener("DOMContentLoaded", function () {
-  const toggleButton = document.getElementById("toggle-btn");
-  if (toggleButton) {
-    toggleButton.onclick = toggleSidebar;
-  } else {
-    console.error("Toggle button not found in the DOM.");
-  }
-});
-
-
-import { getAuth, signInWithEmailAndPassword, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
-import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
+// ----------------------------------------------
+// 🔹 Firebase Imports
+// ----------------------------------------------
 import { initializeApp } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-app.js";
+import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-auth.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/11.5.0/firebase-database.js";
 
+// ----------------------------------------------
+// 🔹 Firebase Config & Init
+// ----------------------------------------------
 const firebaseConfig = {
   apiKey: "AIzaSyCnVEwq0ZFqrQroNRaMaU1iFNLO5X0P2MY",
   authDomain: "logindata173.firebaseapp.com",
@@ -37,6 +22,50 @@ const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const database = getDatabase(app);
 
+// ----------------------------------------------
+// 🔹 Theme Handling (Global for All Pages)
+// ----------------------------------------------
+document.addEventListener("DOMContentLoaded", () => {
+  const savedTheme = localStorage.getItem("selectedTheme");
+
+  if (savedTheme === "light") {
+    document.body.classList.add("light-theme");
+  } else if (savedTheme === "system") {
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (!prefersDark) {
+      document.body.classList.add("light-theme");
+    }
+  }
+});
+
+// ----------------------------------------------
+// 🔹 Sidebar Toggle
+// ----------------------------------------------
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const toggleButton = document.getElementById("toggle-btn");
+
+  if (!sidebar || !toggleButton) {
+    console.error("Sidebar or toggle button not found!");
+    return;
+  }
+
+  sidebar.classList.toggle("close");
+  toggleButton.classList.toggle("rotate");
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const toggleButton = document.getElementById("toggle-btn");
+  if (toggleButton) {
+    toggleButton.onclick = toggleSidebar;
+  } else {
+    console.error("Toggle button not found in the DOM.");
+  }
+});
+
+// ----------------------------------------------
+// 🔹 Auth State Debug
+// ----------------------------------------------
 onAuthStateChanged(auth, (user) => {
   if (user) {
     console.log("🔥 Logged in user info:", user);
@@ -45,10 +74,14 @@ onAuthStateChanged(auth, (user) => {
   }
 });
 
+// ----------------------------------------------
+// 🔹 Admin Access Unlocker (Secret Pass)
+// ----------------------------------------------
 const authorizeAccess = {
-  btn: function (elementId, pass) {
+  btn: (elementId, pass) => {
     const correctPass = "W@leed!@#";
 
+    // Anti-inspection placeholder
     setTimeout(() => {
       console.log("%c ", "font-size:1px; color:transparent;");
     }, 50);
@@ -70,4 +103,10 @@ const authorizeAccess = {
     console.log(`✅ Element #${elementId} is now enabled.`);
   }
 };
-window.authorizeAccess = authorizeAccess; //make it usable
+
+window.authorizeAccess = authorizeAccess;
+
+// ----------------------------------------------
+// 🔹 Disable Right-Click Context Menu
+// ----------------------------------------------
+window.addEventListener("contextmenu", (e) => e.preventDefault());
