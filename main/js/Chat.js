@@ -7,7 +7,7 @@ if (localUser && localUser.type === "class") {
     console.log("Verified class under:", localUser.firstName);
     document.getElementById("classN").textContent = `You are in class ${localUser.firstName}`;
 } else {
-    window.location.href = "main/home.html";
+    window.location.href = "home.html";
 }
 if (confirmedUser) {
 	console.log("Confirmed user:", confirmedUser);
@@ -44,7 +44,8 @@ input2.addEventListener("input", () => {
 emailjs.init("P5eZLF1ISh-znncVt");
 
 const users = {
-"2022": "2022@iischoolabudhabi.com",
+    "2022": "2022@iischoolabudhabi.com",
+    "Mr. Safwan": "safwan@iischoolabudhabi.com",
 };
 
 let generatedOTP = "";

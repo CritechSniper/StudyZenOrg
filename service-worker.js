@@ -39,7 +39,7 @@ const urlsToCache = [
     '/main/css/timetable.css',
     '/main/css/todo.css', 
     '/main/css/settings.css',
-     '/mian/css/chat.css',
+    '/main/css/Chat.css',
 
     '/main/icons/OL.svg',
     '/main/icons/UL.svg',
@@ -62,7 +62,7 @@ const urlsToCache = [
     '/main/js/todo.js',
     '/main/js/toggles.js',
     '/main/js/settings.js',
-    '/main/js/chat.js',
+    '/main/js/Chat.js',
 
     '/main/Main Icons/SVG/Asset 1.svg', 
     '/main/Main Icons/SVG/Asset 2.svg', 

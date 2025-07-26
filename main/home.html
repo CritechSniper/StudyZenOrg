@@ -135,6 +135,15 @@
 					<p>Add and manage your tasks easily.</p>
 				</div>
 			</div>
+			<div class="exclusive card" id="exclusive1">
+				<div class="card-img-container">
+					<img src="Main Icons/Chat.svg" alt="Chat Icon" class="card-img">
+				</div>
+				<div class="card-content">
+					<h3>Chat (Class Exculsive)</h3>
+					<p>Discuss with your classmates and teachers</p>
+				</div>
+			</div>
 		</div>
 
 			  
@@ -168,17 +177,23 @@
 		</div>
 	</div>
 <script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.error('Service Worker registration failed:', error);
-                    });
-            });
-        }
+	if ('serviceWorker' in navigator) {
+		window.addEventListener('load', () => {
+			navigator.serviceWorker.register('/service-worker.js')
+				.then(registration => {
+					console.log('Service Worker registered with scope:', registration.scope);
+				})
+				.catch(error => {
+					console.error('Service Worker registration failed:', error);
+				});
+		});
+	}
+	const localUser = JSON.parse(localStorage.getItem("user"));
+	if (localUser && localUser.type === "class") {
+		document.getElementById('exclusive1').style.display = 'flex';
+	} else {
+		document.getElementById('exclusive1').style.display = 'none';
+	}
 </script>
 	<script src="js/Loader.js"></script>
 	<link rel="stylesheet" href="css/Ltheme.css">
