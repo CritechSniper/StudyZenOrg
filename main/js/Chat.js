@@ -193,6 +193,7 @@ setInterval(() => {
 		});
 	});
 }, 1000);
+document.addEventListener("keydown", e => e.key === "Enter" && document.getElementById("sendMessage").click());
 window.sendMessage = sendMessage;
 window.confirmed = confirmed;
 window.verifyOTP = verifyOTP;
