@@ -107,47 +107,7 @@
 		</div>
 	</div>
 	<link rel="stylesheet" href="css/loaderS.css">
-	<!-- <script>
-		window.onload = function() {
-			setTimeout(() => {
-			const overlay = document.querySelector('.loader-overlay');
-			const loader = document.querySelector('.loaderS');
-
-			if (overlay) overlay.style.opacity = '0';
-			if (loader) loader.style.opacity = '0';
-
-			setTimeout(() => {
-				if (overlay) overlay.style.display = 'none';
-				if (loader) loader.style.display = 'none';
-			}, 500);
-			}, 1400);
-		};
-		document.addEventListener("DOMContentLoaded", function () {
-		const localUser = JSON.parse(localStorage.getItem("user"));
-		const changePassBtn = document.getElementById("change-password-btn");
-		const deleteAccBtn = document.getElementById("delete-account-btn");
-
-		if (localUser && localUser.type === "class") {
-			if (changePassBtn) {
-			changePassBtn.classList.add("disabled");
-			changePassBtn.disabled = true;
-			}
-			if (deleteAccBtn) {
-			deleteAccBtn.classList.add("disabled");
-			deleteAccBtn.disabled = true;
-			}
-		} else {
-			if (changePassBtn) {
-			changePassBtn.classList.remove("disabled");
-			changePassBtn.disabled = false;
-			}
-			if (deleteAccBtn) {
-			deleteAccBtn.classList.remove("disabled");
-			deleteAccBtn.disabled = false;
-			}
-		}
-		});
-	</script> -->
+	<script src="js/Loader.js"></script>
 	<script type="module" src="js/settings.js"></script>
 	<link rel="stylesheet" href="css/Ltheme.css">
 </body>

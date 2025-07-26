@@ -194,21 +194,8 @@
 		</div>
 	</div>
 	<link rel="stylesheet" href="css/loaderS.css">
+	<script src="js/Loader.js"></script>
 	<script>
-		window.onload = function() {
-			setTimeout(() => {
-			const overlay = document.querySelector('.loader-overlay');
-			const loader = document.querySelector('.loaderS');
-
-			if (overlay) overlay.style.opacity = '0';
-			if (loader) loader.style.opacity = '0';
-
-			setTimeout(() => {
-				if (overlay) overlay.style.display = 'none';
-				if (loader) loader.style.display = 'none';
-			}, 500);
-			}, 1400);
-		};
 		document.addEventListener("DOMContentLoaded", function () {
 		const localUser = JSON.parse(localStorage.getItem("user"));
 		const saveBtn = document.getElementById("saveTable");

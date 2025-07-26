@@ -29,14 +29,14 @@ const snapshot = await get(codeRef);
 if (snapshot.exists()) {
     const storedCode = snapshot.val().toString();
     if (inputCode === storedCode) {
-    alert("✅ Access Granted!");
-    localStorage.setItem("access", "accessgranted24h");
-    localStorage.setItem("accessTime", Date.now()); // Store the code in local storage
-    window.location.href = "home.html";
+        alert("Access Granted!");
+        localStorage.setItem("access", "accessgranted24h");
+        localStorage.setItem("accessTime", Date.now()); // Store the code in local storage
+        window.location.href = "home.html";
     } else {
-    alert("❌ Wrong Code");
+        alert("Wrong Code");
     }
 } else {
-    alert("⚠️ No code found in database.");
+    alert("No code found in database.");
 }
 });

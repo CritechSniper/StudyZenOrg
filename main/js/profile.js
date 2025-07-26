@@ -49,7 +49,7 @@ document.addEventListener('contextmenu', e => e.preventDefault());
 function signout() {
   signOut(auth)
     .then(() => {
-      console.log("✅ Signed out from Firebase");
+      console.log("Signed out from Firebase");
       localStorage.removeItem("user"); // 🔥 Clear local user data
       window.location.reload(); // Optional: refresh to update UI
     })

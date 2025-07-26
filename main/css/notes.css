@@ -372,7 +372,7 @@ label {
 #docTitle {
   border-radius: 6px;
   outline: none;
-  border: none;
+  border: 1px solid var(--line-clr);
   z-index: 10;
 }
 #editorWrapper {

@@ -134,35 +134,7 @@
 		</div>
 	</div>
 	<link rel="stylesheet" href="css/loaderS.css">
-	<script>
-        if ('serviceWorker' in navigator) {
-            window.addEventListener('load', () => {
-                navigator.serviceWorker.register('/service-worker.js')
-                    .then(registration => {
-                        console.log('Service Worker registered with scope:', registration.scope);
-                    })
-                    .catch(error => {
-                        console.error('Service Worker registration failed:', error);
-                    });
-            });
-        }
-    </script>
-	<script>
-		window.onload = function() {
-			setTimeout(() => {
-				const overlay = document.querySelector('.loader-overlay');
-				const loader = document.querySelector('.loaderS');
-				
-				if (overlay) overlay.style.opacity = '0';
-			if (loader) loader.style.opacity = '0';
-			
-			setTimeout(() => {
-				if (overlay) overlay.style.display = 'none';
-				if (loader) loader.style.display = 'none';
-			}, 500);
-		}, 1400);
-	};
-	</script>
+	<script src="js/Loader.js"></script>
 	<link rel="stylesheet" href="css/Ltheme.css">
 </body>
 </html>

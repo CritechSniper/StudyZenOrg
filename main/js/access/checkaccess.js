@@ -7,5 +7,5 @@ const twentyFourHours = 24 * 60 * 60 * 1000;
 if (!granted || !grantedTime || now - grantedTime > twentyFourHours) {
   localStorage.removeItem("access");
   localStorage.removeItem("accessTime");
-  window.location.href = "access-denied.html"; // or login again
+  window.location.href = "access-denied.html"; 
 }

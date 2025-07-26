@@ -23,21 +23,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const themeSelect = document.getElementById("theme-select");
   const changePassBtn = document.getElementById("change-password-btn");
   const deleteAccBtn = document.getElementById("delete-account-btn");
-  const overlay = document.querySelector('.loader-overlay');
-  const loader = document.querySelector('.loaderS');
 
-  // ------------------ 1. Loader Animation ------------------
-  setTimeout(() => {
-    if (overlay) overlay.style.opacity = '0';
-    if (loader) loader.style.opacity = '0';
-
-    setTimeout(() => {
-      if (overlay) overlay.style.display = 'none';
-      if (loader) loader.style.display = 'none';
-    }, 500);
-  }, 1400);
-
-  // ------------------ 2. Theme Selector ------------------
+  // ------------------ 1. Theme Selector ------------------
   if (themeSelect) {
     const savedTheme = localStorage.getItem('selectedTheme') || 'dark';
     themeSelect.value = savedTheme;
@@ -63,7 +50,7 @@ window.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // ------------------ 3. Auth Check & Button Control ------------------
+  // ------------------ 2. Auth Check & Button Control ------------------
   onAuthStateChanged(auth, (user) => {
     if (!user) {
       // Not logged in — disable buttons and show alerts
@@ -71,20 +58,16 @@ window.addEventListener("DOMContentLoaded", () => {
       return;
     }
 
-    console.log("🔥 Logged in:", user.uid);
-
     // Get user data from Firebase
     const userRef = ref(database, "users/" + user.uid);
     get(userRef)
       .then((snapshot) => {
         if (snapshot.exists()) {
           const userData = snapshot.val();
-          console.log("✅ User data loaded:", userData);
-
           if (userData.type === "class") {
-            disableButtons(changePassBtn, deleteAccBtn); // Silent disable
+            disableButtons(changePassBtn, deleteAccBtn);
           } else {
-            enableButtons(changePassBtn, deleteAccBtn); // Enable for normal user
+            enableButtons(changePassBtn, deleteAccBtn);
           }
         } else {
           console.warn("⚠️ No user data found in database.");
@@ -127,7 +110,6 @@ function enableButtons(changeBtn, deleteBtn) {
     changeBtn.disabled = false;
     changeBtn.addEventListener("click", () => {
       console.log("Changing password...");
-      // You can show a modal or navigate to password change here
     });
   }
 
@@ -145,8 +127,8 @@ function signout() {
   signOut(auth)
     .then(() => {
       console.log("✅ Signed out successfully.");
-      localStorage.removeItem("user"); // Clear local data
-      window.location.reload(); // Optional: update page state after sign out
+      localStorage.removeItem("user");
+      window.location.reload();
     })
     .catch((error) => {
       console.error("❌ Error signing out:", error);

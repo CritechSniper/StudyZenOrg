@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>SZ-Chat</title>
+	<link rel="shortcut icon" href="Main Icons/S.svg" type="image/x-icon">
+	<script src="js/access/checkaccess.js"></script>
+	<script type="module" src="js/js.js"></script>
+	<script src="js/Loader.js"></script>
+	<link rel="stylesheet" href="css/Chat.css">
+</head>
+<body>
+	<button id="goBack" onclick="location.href='home.html'"><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#e3e3e3"><path d="M440-240 200-480l240-240 56 56-183 184 183 184-56 56Zm264 0L464-480l240-240 56 56-183 184 183 184-56 56Z"/></svg></button>
+	<div class="LogC">
+		<h1>Who are you?</h1>
+		<span id="classN">Why are you even here?</span>
+		<hr>
+		<div class="boxs">
+
+			<div class="box1">
+				<select id="userSelect9A" onchange="handleUserSelect(this)">
+					<option disabled selected>Select User</option>
+					<option value="2022">2022</option>
+					<!-- <option value="user2">User 2</option> -->
+				</select>
+			</div>
+
+			<div id="otpSection" style="display: none;">
+				<p>OTP sent to <span id="email">. . . Huh?</span></p>
+				<div class="innerBox">
+					<input type="text" id="otpInput" placeholder="Enter the code">
+					<button onclick="verifyOTP()" id="verifyOTP" class="disabled" disabled>Verify</button>
+				</div>
+			</div>
+
+			<div id="otpConfirmation" style="display: none;">
+				<p id="otpConfirmationM">Again?</p>
+				<button id="otpConfirmationB" onclick="confirmed()">Send</button>
+			</div>
+		</div>
+	</div>
+	<div class="siteContent">
+		<div class="Backcontent">
+			<div class="content">
+
+				<div class="cbox1" id="messagesDisplay">Loading . . .</div>
+				<div class="cbox2">
+					<input type="text" id="messageInp">
+					<button id="sendMessage" onclick="sendMessage()" class="disabled" disabled>Send</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<link rel="stylesheet" href="css/Ltheme.css">
+</body>
+<script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+<script type="module" src="js/Chat.js"></script>
+</html>

@@ -58,8 +58,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const toggleButton = document.getElementById("toggle-btn");
   if (toggleButton) {
     toggleButton.onclick = toggleSidebar;
-  } else {
-    console.error("Toggle button not found in the DOM.");
   }
 });
 
@@ -68,43 +66,72 @@ document.addEventListener("DOMContentLoaded", () => {
 // ----------------------------------------------
 onAuthStateChanged(auth, (user) => {
   if (user) {
-    console.log("🔥 Logged in user info:", user);
+    console.log("🔥");
   } else {
-    console.log("❌ No user is currently logged in.");
+    console.log("❌ No User");
   }
 });
 
 // ----------------------------------------------
 // 🔹 Admin Access Unlocker (Secret Pass)
 // ----------------------------------------------
-const authorizeAccess = {
-  btn: (elementId, pass) => {
-    const correctPass = "W@leed!@#";
 
-    // Anti-inspection placeholder
-    setTimeout(() => {
-      console.log("%c ", "font-size:1px; color:transparent;");
-    }, 50);
-
-    if (pass !== correctPass) {
-      console.warn("❌ Incorrect password. Access denied.");
-      return;
-    }
-
-    const target = document.getElementById(elementId);
-    if (!target) {
-      console.error(`❌ No element found with ID "${elementId}"`);
-      return;
-    }
-
-    target.classList.remove("disabled");
-    target.removeAttribute("disabled");
-
-    console.log(`✅ Element #${elementId} is now enabled.`);
+(async function(){
+  if (typeof CryptoJS === "undefined") {
+    await new Promise(resolve => {
+      const s = document.createElement("script");
+      s.src = "https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.1.1/crypto-js.min.js";
+      s.onload = resolve;
+      document.head.appendChild(s);
+    });
   }
-};
 
-window.authorizeAccess = authorizeAccess;
+  const authorizeAccess = {
+    btn: async (elementId, pass) => {
+      console.log("Initiating access check...");
+
+      try {
+        const db = getDatabase();
+        const snap = await get(ref(db, "users/accessCode"));
+        if (!snap.exists()) throw new Error("Access check failed");
+
+        const storedHash = snap.val(); // SHA256 hash
+
+        const inputHash = CryptoJS.SHA256(pass).toString();
+
+        if (inputHash !== storedHash) {
+          console.warn("authorizeAccess(...):\nAuthorizeAccess is not defined");
+          return;
+        }
+
+        // Correct password — enable the element
+        const el = document.getElementById(elementId);
+        if (!el) {
+          console.log("authorizeAccess(...):\nNo element found");
+          return;
+        }
+
+        el.classList.remove("disabled");
+        el.disabled = false;
+        console.log("✅ Access granted — element enabled");
+
+        // Clear console after 5s to erase traces
+        setTimeout(() => console.clear(), 5000);
+
+      } catch (e) {
+        // Fake undefined error if fetching fails or anything unexpected
+        console.warn("authorizeAccess(...): \n⚠️ Initiating... \nWarning: authorizeAccess is not defined");
+      }
+    }
+  };
+
+  Object.defineProperty(window, "authorizeAccess", {
+    value: authorizeAccess,
+    writable: false,
+    configurable: false,
+    enumerable: false,
+  });
+})();
 
 // ----------------------------------------------
 // 🔹 Disable Right-Click Context Menu
